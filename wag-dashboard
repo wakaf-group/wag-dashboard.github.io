@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSI Maslahat — Waqf ERP 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F0F2F5;color:#1C1C1E;font-size:14px}
+:root{--G:#1D9E75;--Gl:#E8F7F2;--Gd:#0F6E56;--R:#E24B4A;--Rl:#FDEAEA;--AM:#F59E0B;--Al:#FEF3C7;--B:#3B82F6;--Bl:#EFF6FF;--PU:#8B5CF6;--Pl:#F5F3FF;--bd:#E4E4E7;--bg:#F0F2F5;--sur:#fff;--txt:#1C1C1E;--mu:#71717A;--lt:#A1A1AA}
+.app{display:flex;height:100vh;overflow:hidden}
+.sb{width:236px;background:var(--sur);border-right:1px solid var(--bd);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
+.sb-logo{padding:15px 14px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px}
+.sb-ic{width:32px;height:32px;background:var(--G);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;flex-shrink:0}
+.sb-nm{font-size:13px;font-weight:600}.sb-sb{font-size:11px;color:var(--mu)}
+.sb-nav{padding:8px 7px;flex:1}
+.sb-sec{font-size:10px;font-weight:600;color:var(--lt);text-transform:uppercase;letter-spacing:.7px;padding:10px 8px 3px;margin-top:4px}
+.ni{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;color:var(--mu);font-size:13px;border:none;background:none;width:100%;text-align:left;transition:all .12s;font-family:inherit}
+.ni:hover{background:#F4F4F5;color:var(--txt)}.ni.on{background:var(--Gl);color:var(--Gd);font-weight:600}
+.ni i{font-size:15px;width:17px;flex-shrink:0}
+.sn{padding-left:16px}.sn .ni{font-size:12px;padding:5px 9px}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.topbar{padding:12px 22px;background:var(--sur);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px}
+.topbar-left{flex:1}.topbar h1{font-size:15px;font-weight:600}.topbar p{font-size:11px;color:var(--mu);margin-top:1px}
+.topbar-right{display:flex;gap:7px;align-items:center;flex-shrink:0}
+.content{flex:1;overflow-y:auto;padding:18px 22px}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border-radius:8px;border:1px solid var(--bd);background:var(--sur);cursor:pointer;font-size:13px;font-weight:500;color:var(--txt);transition:all .12s;font-family:inherit}
+.btn:hover{background:#F4F4F5}
+.btn-g{background:var(--G);color:#fff;border-color:var(--G)}.btn-g:hover{background:var(--Gd)}
+.btn-r{background:var(--Rl);color:#B91C1C;border-color:#FCA5A5}.btn-r:hover{background:#FCA5A5}
+.btn-b{background:var(--Bl);color:#1D4ED8;border-color:#93C5FD}.btn-b:hover{background:#DBEAFE}
+.btn-sm{padding:5px 10px;font-size:12px}.btn-xs{padding:3px 7px;font-size:11px}
+.card{background:var(--sur);border:1px solid var(--bd);border-radius:12px;padding:15px 19px;margin-bottom:14px}
+.ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.ct{font-size:14px;font-weight:600}.cs2{font-size:11px;color:var(--mu)}
+.mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:16px}
+.met{background:var(--sur);border:1px solid var(--bd);border-radius:10px;padding:12px 14px}
+.ml{font-size:11px;color:var(--mu);margin-bottom:4px;font-weight:500}.mv{font-size:20px;font-weight:700;line-height:1.1}.ms{font-size:11px;color:var(--mu);margin-top:2px}
+.met.g .mv{color:var(--G)}.met.r .mv{color:var(--R)}.met.b .mv{color:var(--B)}.met.a .mv{color:var(--AM)}.met.p .mv{color:var(--PU)}
+.bdg{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.bG{background:var(--Gl);color:var(--Gd)}.bR{background:var(--Rl);color:#B91C1C}.bA{background:var(--Al);color:#92400E}.bB{background:var(--Bl);color:#1D4ED8}.bP{background:var(--Pl);color:#6D28D9}.bGR{background:#F4F4F5;color:#52525B}
+.pb{height:6px;background:#E4E4E7;border-radius:4px;overflow:hidden}
+.pf{height:100%;border-radius:4px}.pf.g{background:var(--G)}.pf.a{background:var(--AM)}.pf.r{background:var(--R)}
+.tabs{display:flex;border-bottom:1px solid var(--bd);margin-bottom:14px;overflow-x:auto}
+.tab{padding:8px 14px;font-size:13px;font-weight:500;color:var(--mu);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:inherit;white-space:nowrap;transition:all .12s}
+.tab.on{color:var(--Gd);border-bottom-color:var(--G)}.tab:hover{color:var(--txt)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;padding:9px 11px;font-size:11px;font-weight:600;color:var(--mu);background:#FAFAFA;border-bottom:1px solid var(--bd);white-space:nowrap;cursor:pointer;user-select:none}
+th:hover{background:#F0F0F0}
+th .sort-icon{opacity:.4;font-size:10px;margin-left:3px}
+th.asc .sort-icon::after{content:'↑';opacity:1}
+th.desc .sort-icon::after{content:'↓';opacity:1}
+td{padding:8px 11px;font-size:12px;border-bottom:1px solid #F4F4F5;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#FAFAFA}
+.tn{text-align:right;font-variant-numeric:tabular-nums}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fl{font-size:11px;font-weight:600;color:var(--mu)}
+.fi,.fse,.fta,.fdt{padding:7px 10px;border:1px solid var(--bd);border-radius:7px;font-size:13px;background:var(--sur);color:var(--txt);font-family:inherit;width:100%}
+.fi:focus,.fse:focus,.fta:focus,.fdt:focus{outline:2px solid var(--G);outline-offset:1px}
+.fta{resize:vertical;min-height:64px}
+.gr2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.gr4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
+.ap{background:#FAFAFA;border:1px solid var(--bd);border-radius:12px;padding:15px;margin-bottom:14px;display:none}
+.ap.open{display:block}
+.apt{font-size:13px;font-weight:600;margin-bottom:12px}
+.apf{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+.filters-bar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center;padding:10px 14px;background:var(--sur);border:1px solid var(--bd);border-radius:10px}
+.filters-bar label{font-size:11px;font-weight:600;color:var(--mu);white-space:nowrap}
+.fi-sm{padding:5px 8px;border:1px solid var(--bd);border-radius:6px;font-size:12px;background:var(--sur);color:var(--txt);font-family:inherit}
+.kf{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap}
+.ki{padding:6px 10px;border:1px solid var(--bd);border-radius:7px;font-size:12px;background:var(--sur);color:var(--txt);font-family:inherit}
+.kb{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kc{background:#FAFAFA;border-radius:12px;padding:11px;min-height:80px}
+.kch{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.kct{font-size:13px;font-weight:600}
+.kcn{background:var(--bd);color:var(--mu);border-radius:20px;padding:2px 7px;font-size:11px;font-weight:600}
+.kcard{background:var(--sur);border:1px solid var(--bd);border-radius:9px;padding:11px;margin-bottom:7px;cursor:pointer;transition:all .12s}
+.kcard:hover{border-color:var(--G)}
+.kname{font-size:13px;font-weight:600;margin-bottom:4px;line-height:1.4}
+.kprev{font-size:11px;color:var(--mu);line-height:1.5;margin-bottom:7px}
+.kfoot{display:flex;gap:5px;flex-wrap:wrap}
+.kdate{font-size:10px;color:var(--lt);display:flex;align-items:center;gap:3px;margin-top:4px}
+.gw{overflow-x:auto}
+.gt{min-width:660px}
+.ghd{display:flex;padding-bottom:5px;border-bottom:1px solid var(--bd);margin-bottom:7px}
+.glb{width:195px;flex-shrink:0;font-size:10px;font-weight:600;color:var(--mu)}
+.gms{flex:1;display:grid;grid-template-columns:repeat(12,1fr)}
+.gm{font-size:9px;color:var(--mu);text-align:center}
+.grow{display:flex;align-items:center;margin-bottom:5px}
+.grl{width:195px;flex-shrink:0;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:8px;cursor:pointer;color:var(--Gd)}
+.grl:hover{text-decoration:underline}
+.gtr{flex:1;height:18px;background:#F4F4F5;border-radius:3px;position:relative}
+.gbar{position:absolute;top:1px;height:16px;border-radius:3px;display:flex;align-items:center;padding:0 5px;font-size:9px;color:#fff;font-weight:500}
+.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.acard{background:var(--sur);border:1px solid var(--bd);border-radius:12px;padding:14px;transition:all .12s}
+.acard:hover{border-color:var(--G)}
+.aico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:500;display:none;align-items:flex-start;justify-content:center;padding:36px 14px;overflow-y:auto}
+.ov.open{display:flex}
+.mbox{background:var(--sur);border-radius:14px;width:640px;max-width:100%;border:1px solid var(--bd)}
+.mhd{padding:14px 18px;border-bottom:1px solid var(--bd);display:flex;gap:10px}
+.mhc{flex:1}.mclose{background:none;border:none;cursor:pointer;color:var(--mu);font-size:20px;padding:2px;flex-shrink:0;line-height:1}
+.mbody{padding:18px}
+.alog{list-style:none;position:relative;padding-left:18px}
+.alog::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:1px;background:var(--bd)}
+.ali{position:relative;padding-bottom:12px}
+.adot{position:absolute;left:-16px;top:3px;width:12px;height:12px;border-radius:50%;background:var(--G);border:2px solid var(--sur)}
+.adate{font-size:10px;color:var(--mu);margin-bottom:2px}.atext{font-size:13px;line-height:1.5}
+.ie{border:1px solid transparent;background:transparent;font-size:inherit;font-weight:inherit;color:inherit;padding:2px 5px;border-radius:4px;font-family:inherit;outline:none}
+.ie:hover{background:#F4F4F5;border-color:var(--bd)}.ie:focus{background:#F4F4F5;border-color:var(--G)}
+.page{display:none}.page.active{display:block}
+.bc{display:flex;gap:5px;align-items:flex-end;height:100px}
+.bi{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+.bfill{width:100%;border-radius:3px 3px 0 0;min-height:4px}
+.blb{font-size:9px;color:var(--mu);text-align:center;line-height:1.2;max-width:52px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bval{font-size:9px;color:var(--mu);font-weight:600}
+.info-box{font-size:12px;color:var(--mu);margin-bottom:12px;padding:10px 12px;background:var(--Gl);border-radius:8px;display:flex;gap:8px;align-items:flex-start}
+.info-box i{color:var(--G);font-size:16px;flex-shrink:0;margin-top:1px}
+/* Progress bar card */
+.prog-card{background:var(--sur);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.prog-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.prog-card-title{font-size:13px;font-weight:600}
+.prog-card-meta{font-size:11px;color:var(--mu);margin-top:2px}
+.prog-card-nums{display:flex;gap:16px;margin-bottom:6px}
+.prog-card-num{font-size:12px}.prog-card-num span{font-weight:600}
+/* Himpun compact table view */
+.himpun-compact th,.himpun-compact td{padding:7px 10px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sb">
+  <div class="sb-logo">
+    <div class="sb-ic"><i class="ti ti-building-mosque"></i></div>
+    <div><div class="sb-nm">BSI Maslahat</div><div class="sb-sb">Waqf Group ERP</div></div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-sec">Overview</div>
+    <button class="ni on" onclick="go('dashboard')"><i class="ti ti-layout-dashboard"></i>Dashboard</button>
+    <div class="sb-sec">Project Tracker</div>
+    <button class="ni" onclick="go('tracker','')"><i class="ti ti-kanban"></i>Semua Project</button>
+    <div class="sn">
+      <button class="ni" onclick="go('tracker','Rumah Quran')"><i class="ti ti-book"></i>Rumah Quran</button>
+      <button class="ni" onclick="go('tracker','Masjid BSI')"><i class="ti ti-building-mosque"></i>Masjid BSI</button>
+      <button class="ni" onclick="go('tracker','Fundraising')"><i class="ti ti-heart-handshake"></i>Fundraising</button>
+      <button class="ni" onclick="go('tracker','Pengelolaan Aset')"><i class="ti ti-briefcase"></i>Pengelolaan Aset</button>
+    </div>
+    <div class="sb-sec">Data &amp; Target</div>
+    <button class="ni" onclick="go('himpun')"><i class="ti ti-trending-up"></i>Penghimpunan</button>
+    <button class="ni" onclick="go('salprog')"><i class="ti ti-send"></i>Penyaluran Program</button>
+    <button class="ni" onclick="go('saluang')"><i class="ti ti-currency-dollar"></i>Penyaluran Wakaf Uang</button>
+    <button class="ni" onclick="go('salmelalui')"><i class="ti ti-droplet"></i>Penyaluran Wakaf Melalui Uang</button>
+    <button class="ni" onclick="go('imbalhasil')"><i class="ti ti-chart-line"></i>Penyaluran Imbal Hasil</button>
+    <button class="ni" onclick="go('pengelolaan')"><i class="ti ti-wallet"></i>Pengelolaan Wakaf Uang</button>
+    <button class="ni" onclick="go('aset')"><i class="ti ti-building-estate"></i>Kepemilikan Aset</button>
+  </nav>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left"><h1 id="ptitle">Dashboard</h1><p id="psub">BSI Maslahat · Waqf Group</p></div>
+    <div class="topbar-right">
+      <select class="fi-sm" id="global-year" onchange="applyGlobalYear()" style="width:90px">
+        <option value="">Semua Tahun</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026" selected>2026</option>
+      </select>
+      <button class="btn btn-sm" id="btn-export" onclick="handleExport()"><i class="ti ti-download"></i>Export</button>
+      <button class="btn btn-sm btn-g" onclick="handleAdd()"><i class="ti ti-plus"></i>Tambah</button>
+    </div>
+  </div>
+  <div class="content">
+
+<!-- DASHBOARD -->
+<div id="pg-dashboard" class="page active">
+  <div class="mg" id="dm"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+    <div class="card">
+      <div class="ch"><div><div class="ct">Target Penghimpunan vs Realisasi</div><div class="cs2" id="dash-year-label">2026</div></div></div>
+      <div id="dash-target-h"></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div><div class="ct">Target Penyaluran Program vs Realisasi</div><div class="cs2" id="dash-year-label2">2026</div></div></div>
+      <div id="dash-target-sp"></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div class="card"><div class="ch"><div><div class="ct">Penghimpunan per Program</div><div class="cs2">Top 6 program</div></div></div><div class="bc" id="dbar"></div></div>
+    <div class="card"><div class="ch"><div class="ct">Progress per Divisi (Project)</div></div><div id="ddiv"></div></div>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="ch"><div class="ct">Project On Hold — Perlu Tindak Lanjut</div><span class="bdg bR" id="dhbadge">0</span></div><div id="dhold"></div></div>
+</div>
+
+<!-- TRACKER -->
+<div id="pg-tracker" class="page">
+  <div class="ap" id="ap-proj">
+    <div class="apt">Tambah Project Baru</div>
+    <div class="gr2"><div class="fg"><label class="fl">Nama Project</label><input class="fi" id="np-n" placeholder="Nama project..."></div><div class="fg"><label class="fl">Divisi</label><select class="fse" id="np-d"><option>Rumah Quran</option><option>Masjid BSI</option><option>Fundraising</option><option>Pengelolaan Aset</option><option>Program</option></select></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">PIC</label><input class="fi" id="np-p" placeholder="Nama PIC..."></div><div class="fg"><label class="fl">Status</label><select class="fse" id="np-s"><option>On Going</option><option>On Hold</option><option>Done</option></select></div></div>
+    <div class="gr2" style="margin-top:9px">
+      <div class="fg"><label class="fl">Bulan Mulai</label><select class="fse" id="np-bm"><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">Mei</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Agu</option><option value="9">Sep</option><option value="10">Okt</option><option value="11">Nov</option><option value="12">Des</option></select></div>
+      <div class="fg"><label class="fl">Bulan Selesai</label><select class="fse" id="np-bs"><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">Mei</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Agu</option><option value="9">Sep</option><option value="10">Okt</option><option value="11">Nov</option><option value="12" selected>Des</option></select></div>
+    </div>
+    <div class="fg" style="margin-top:9px"><label class="fl">Catatan Awal</label><textarea class="fta" id="np-note" placeholder="Deskripsi..."></textarea></div>
+    <div class="apf"><button class="btn btn-sm" onclick="closeAP('ap-proj')">Batal</button><button class="btn btn-sm btn-g" onclick="addProject()"><i class="ti ti-check"></i>Simpan</button></div>
+  </div>
+  <div class="kf">
+    <select class="ki" id="fd" onchange="renderK()"><option value="">Semua Divisi</option><option>Rumah Quran</option><option>Masjid BSI</option><option>Fundraising</option><option>Pengelolaan Aset</option><option>Program</option></select>
+    <select class="ki" id="fp" onchange="renderK()"><option value="">Semua PIC</option><option>Kays</option><option>Azizyah</option><option>Dodi</option></select>
+    <select class="ki" id="fs" onchange="renderK()"><option value="">Semua Status</option><option>On Going</option><option>On Hold</option><option>Done</option></select>
+    <input class="ki" id="fq" placeholder="Cari project..." oninput="renderK()">
+    <div style="margin-left:auto;display:flex;gap:5px">
+      <button class="btn btn-sm" onclick="setTV('kanban')"><i class="ti ti-layout-kanban"></i>Kanban</button>
+      <button class="btn btn-sm" onclick="setTV('gantt')"><i class="ti ti-timeline"></i>Timeline</button>
+    </div>
+  </div>
+  <div id="vk"><div class="kb" id="kboard"></div></div>
+  <div id="vg" style="display:none"><div class="card"><div class="gw"><div class="gt" id="gantt"></div></div></div></div>
+</div>
+
+<!-- PENGHIMPUNAN -->
+<div id="pg-himpun" class="page">
+  <div class="ap" id="ap-himpun">
+    <div class="apt">Tambah Program Penghimpunan</div>
+    <div class="gr2"><div class="fg"><label class="fl">Nama Program</label><input class="fi" id="nh-p" placeholder="Wakaf Sumur, Wakaf Masjid..."></div><div class="fg"><label class="fl">Channel</label><input class="fi" id="nh-c" placeholder="BYOND / digital / Rekening..."></div></div>
+    <div class="apf"><button class="btn btn-sm" onclick="closeAP('ap-himpun')">Batal</button><button class="btn btn-sm btn-g" onclick="addHimpunProg()"><i class="ti ti-check"></i>Buat Program</button></div>
+  </div>
+  <div class="mg" id="hm"></div>
+  <div class="filters-bar">
+    <label>Tahun:</label><select class="fi-sm" id="hf-year" onchange="renderH()"><option value="">Semua</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option></select>
+    <label style="margin-left:8px">Bulan:</label><select class="fi-sm" id="hf-month" onchange="renderH()"><option value="">Semua</option><option value="01">Januari</option><option value="02">Februari</option><option value="03">Maret</option><option value="04">April</option><option value="05">Mei</option><option value="06">Juni</option><option value="07">Juli</option><option value="08">Agustus</option><option value="09">September</option><option value="10">Oktober</option><option value="11">November</option><option value="12">Desember</option></select>
+    <label style="margin-left:8px">Channel:</label><select class="fi-sm" id="hf-ch" onchange="renderH()"><option value="">Semua</option></select>
+    <label style="margin-left:8px">Tampilan:</label>
+    <button class="btn btn-xs" id="hview-compact" onclick="setHView('compact')"><i class="ti ti-table"></i>Kompak</button>
+    <button class="btn btn-xs on" id="hview-detail" onclick="setHView('detail')"><i class="ti ti-list"></i>Detail</button>
+    <div style="margin-left:auto;font-size:12px;color:var(--mu)">Total filtered: <strong id="hf-total">Rp 0</strong></div>
+  </div>
+  <div class="tabs">
+    <button class="tab on" onclick="htab('prog',this)">Per Program</button>
+    <button class="tab" onclick="htab('ch',this)">Per Channel</button>
+    <button class="tab" onclick="htab('tgt',this)">vs Target</button>
+  </div>
+  <div id="hp-prog"><div id="hprog-content"></div></div>
+  <div id="hp-ch" style="display:none"><div class="card" id="hch"></div></div>
+  <div id="hp-tgt" style="display:none">
+    <div class="card"><div class="tw"><table><thead><tr><th onclick="sortTH('jenis')">Jenis Penerimaan<span class="sort-icon"></span></th><th class="tn" onclick="sortTH('t')">Target 2026 (Rp)<span class="sort-icon"></span></th><th class="tn" onclick="sortTH('r')">Realisasi (Rp)<span class="sort-icon"></span></th><th class="tn">Gap (Rp)</th><th>Progress</th><th></th></tr></thead><tbody id="tb-ht"></tbody></table></div></div>
+    <div style="display:flex;justify-content:flex-end;margin-top:8px"><button class="btn btn-sm" onclick="addTHrow()"><i class="ti ti-plus"></i>Tambah Baris</button></div>
+  </div>
+</div>
+
+<!-- PENYALURAN PROGRAM -->
+<div id="pg-salprog" class="page">
+  <div class="ap" id="ap-sp">
+    <div class="apt">Tambah Penyaluran Program</div>
+    <div class="gr2"><div class="fg"><label class="fl">Nama Program</label><input class="fi" id="sp-p" placeholder="Nama program..."></div><div class="fg"><label class="fl">Sumber Dana</label><input class="fi" id="sp-s" placeholder="Zakat UPZ BSI / Infak..."></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Divisi</label><select class="fse" id="sp-d"><option>Rumah Quran</option><option>Masjid BSI</option><option>Pengelolaan Aset</option></select></div><div class="fg"><label class="fl">Target 2026 (Rp)</label><input class="fi" id="sp-t" placeholder="12.000.000.000"></div></div>
+    <div class="apf"><button class="btn btn-sm" onclick="closeAP('ap-sp')">Batal</button><button class="btn btn-sm btn-g" onclick="addSP()"><i class="ti ti-check"></i>Simpan</button></div>
+  </div>
+  <div class="mg" id="spm"></div>
+  <div class="filters-bar">
+    <label>Tahun:</label><select class="fi-sm" id="spf-year" onchange="renderSP()"><option value="">Semua</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select>
+    <label style="margin-left:8px">Bulan:</label><select class="fi-sm" id="spf-month" onchange="renderSP()"><option value="">Semua</option><option value="01">Januari</option><option value="02">Februari</option><option value="03">Maret</option><option value="04">April</option><option value="05">Mei</option><option value="06">Juni</option><option value="07">Juli</option><option value="08">Agustus</option><option value="09">September</option><option value="10">Oktober</option><option value="11">November</option><option value="12">Desember</option></select>
+    <label style="margin-left:8px">Divisi:</label><select class="fi-sm" id="spf-div" onchange="renderSP()"><option value="">Semua</option><option>Rumah Quran</option><option>Masjid BSI</option><option>Pengelolaan Aset</option></select>
+  </div>
+  <div id="spprog-content"></div>
+</div>
+
+<!-- PENYALURAN WAKAF UANG -->
+<div id="pg-saluang" class="page">
+  <div class="ap" id="ap-su">
+    <div class="apt">Tambah Penyaluran Wakaf Uang</div>
+    <div class="gr2"><div class="fg"><label class="fl">Program / Instrumen</label><input class="fi" id="su-p" placeholder="CWLS Seri 006, SR019..."></div><div class="fg"><label class="fl">Jenis Instrumen</label><input class="fi" id="su-j" placeholder="CWLS / SR / Deposito / CWLD..."></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Nominal (Rp)</label><input class="fi" id="su-n" placeholder="1.000.000.000"></div><div class="fg"><label class="fl">Penerima Manfaat</label><input class="fi" id="su-pm" placeholder="0"></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Tanggal Mulai</label><input class="fdt" id="su-tm" type="month"></div><div class="fg"><label class="fl">Tanggal Berakhir</label><input class="fdt" id="su-ta" type="month"></div></div>
+    <div class="fg" style="margin-top:9px"><label class="fl">Keterangan</label><textarea class="fta" id="su-k" placeholder="Keterangan..." style="min-height:54px"></textarea></div>
+    <div class="apf"><button class="btn btn-sm" onclick="closeAP('ap-su')">Batal</button><button class="btn btn-sm btn-g" onclick="addSU()"><i class="ti ti-check"></i>Simpan</button></div>
+  </div>
+  <div class="mg" id="sum2"></div>
+  <div class="filters-bar">
+    <label>Tahun:</label><select class="fi-sm" id="suf-year" onchange="renderSU()"><option value="">Semua</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select>
+    <label style="margin-left:8px">Jenis:</label><select class="fi-sm" id="suf-jenis" onchange="renderSU()"><option value="">Semua</option><option>CWLS</option><option>SR</option><option>Deposito</option><option>CWLD</option></select>
+    <input class="fi-sm" id="suf-q" placeholder="Cari..." oninput="renderSU()" style="width:130px">
+    <label style="margin-left:8px">Sort:</label><select class="fi-sm" id="suf-sort" onchange="renderSU()"><option value="p">Nama</option><option value="n">Nominal</option><option value="tm">Tgl Mulai</option></select>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ct">Penyaluran Wakaf Uang</div><div class="cs2">CWLS · SR · Deposito · Instrumen Keuangan</div></div>
+    <div class="tw"><table><thead><tr><th>Program / Instrumen</th><th>Jenis</th><th class="tn">Nominal (Rp)</th><th class="tn">Penerima Manfaat</th><th>Tgl Mulai</th><th>Tgl Berakhir</th><th>Keterangan</th><th></th></tr></thead><tbody id="tb-su"></tbody></table></div>
+  </div>
+</div>
+
+<!-- PENYALURAN WAKAF MELALUI UANG -->
+<div id="pg-salmelalui" class="page">
+  <div class="ap" id="ap-sm">
+    <div class="apt">Tambah Penyaluran Wakaf Melalui Uang</div>
+    <div class="gr2"><div class="fg"><label class="fl">Nama Program</label><input class="fi" id="sm-p" placeholder="Wakaf Sumur, Bangun Masjid..."></div><div class="fg"><label class="fl">Jenis</label><select class="fse" id="sm-j"><option>Sumur Bor</option><option>Masjid / Musholla</option><option>Pendidikan</option><option>Kesehatan</option><option>Infrastruktur</option><option>Lainnya</option></select></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Lokasi</label><input class="fi" id="sm-l" placeholder="Kota, Provinsi..."></div><div class="fg"><label class="fl">Nominal (Rp)</label><input class="fi" id="sm-n" placeholder="350.000.000"></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Penerima Manfaat</label><input class="fi" id="sm-pm" placeholder="0"></div><div class="fg"><label class="fl">Tanggal Realisasi</label><input class="fdt" id="sm-tgl" type="date"></div></div>
+    <div class="fg" style="margin-top:9px"><label class="fl">Keterangan</label><textarea class="fta" id="sm-k" placeholder="Keterangan..." style="min-height:54px"></textarea></div>
+    <div class="apf"><button class="btn btn-sm" onclick="closeAP('ap-sm')">Batal</button><button class="btn btn-sm btn-g" onclick="addSM()"><i class="ti ti-check"></i>Simpan</button></div>
+  </div>
+  <div class="mg" id="smm"></div>
+  <div class="filters-bar">
+    <label>Tahun:</label><select class="fi-sm" id="smf-year" onchange="renderSM()"><option value="">Semua</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select>
+    <label style="margin-left:8px">Jenis:</label><select class="fi-sm" id="smf-jenis" onchange="renderSM()"><option value="">Semua</option><option>Sumur Bor</option><option>Masjid / Musholla</option><option>Pendidikan</option><option>Kesehatan</option><option>Infrastruktur</option><option>Lainnya</option></select>
+    <input class="fi-sm" id="smf-q" placeholder="Cari lokasi/program..." oninput="renderSM()" style="width:160px">
+    <label style="margin-left:8px">Sort:</label><select class="fi-sm" id="smf-sort" onchange="renderSM()"><option value="p">Nama</option><option value="n">Nominal</option><option value="tgl">Tanggal</option></select>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ct">Penyaluran Wakaf Melalui Uang</div><div class="cs2">Sumur Bor · Masjid · Infrastruktur · Program Nyata</div></div>
+    <div class="tw"><table><thead><tr><th>Program</th><th>Jenis</th><th>Lokasi</th><th class="tn">Nominal (Rp)</th><th class="tn">Penerima Manfaat</th><th>Tanggal</th><th>Keterangan</th><th></th></tr></thead><tbody id="tb-sm"></tbody></table></div>
+  </div>
+</div>
+
+<!-- IMBAL HASIL -->
+<div id="pg-imbalhasil" class="page">
+  <div class="ap" id="ap-ih">
+    <div class="apt">Tambah Penyaluran Imbal Hasil</div>
+    <div class="gr2"><div class="fg"><label class="fl">Nama Program</label><input class="fi" id="ih-p" placeholder="Nama program..."></div><div class="fg"><label class="fl">Sumber Dana</label><input class="fi" id="ih-s" placeholder="CWLS / SR / Deposito..."></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Nominal (Rp)</label><input class="fi" id="ih-n" placeholder="45.000.000"></div><div class="fg"><label class="fl">Penerima Manfaat</label><input class="fi" id="ih-pm" placeholder="0"></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Tanggal</label><input class="fdt" id="ih-tgl" type="date"></div><div class="fg"><label class="fl">Keterangan</label><input class="fi" id="ih-k" placeholder="Keterangan..."></div></div>
+    <div class="apf"><button class="btn btn-sm" onclick="closeAP('ap-ih')">Batal</button><button class="btn btn-sm btn-g" onclick="addIH()"><i class="ti ti-check"></i>Simpan</button></div>
+  </div>
+  <div class="mg" id="ihm"></div>
+  <div class="filters-bar">
+    <label>Tahun:</label><select class="fi-sm" id="ihf-year" onchange="renderIH()"><option value="">Semua</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select>
+    <label style="margin-left:8px">Bulan:</label><select class="fi-sm" id="ihf-month" onchange="renderIH()"><option value="">Semua</option><option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option><option value="04">Apr</option><option value="05">Mei</option><option value="06">Jun</option><option value="07">Jul</option><option value="08">Agu</option><option value="09">Sep</option><option value="10">Okt</option><option value="11">Nov</option><option value="12">Des</option></select>
+    <label style="margin-left:8px">Sort:</label><select class="fi-sm" id="ihf-sort" onchange="renderIH()"><option value="tgl">Tanggal</option><option value="n">Nominal</option><option value="p">Nama</option></select>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ct">Penyaluran Imbal Hasil</div><div class="cs2">Distribusi hasil investasi wakaf</div></div>
+    <div class="tw"><table><thead><tr><th>Program</th><th>Sumber Dana</th><th class="tn">Nominal (Rp)</th><th class="tn">Penerima Manfaat</th><th>Tanggal</th><th>Keterangan</th><th></th></tr></thead><tbody id="tb-ih"></tbody></table></div>
+  </div>
+</div>
+
+<!-- PENGELOLAAN WAKAF UANG -->
+<div id="pg-pengelolaan" class="page">
+  <div class="ap" id="ap-pw">
+    <div class="apt">Tambah Pengelolaan Wakaf Uang</div>
+    <div class="gr2"><div class="fg"><label class="fl">Nama Program</label><input class="fi" id="pw-p" placeholder="Nama program / instrumen..."></div><div class="fg"><label class="fl">Sumber Dana</label><input class="fi" id="pw-s" placeholder="CWLS / SR / Deposito..."></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Nominal (Rp)</label><input class="fi" id="pw-n" placeholder="1.000.000.000"></div><div class="fg"><label class="fl">Penerima Manfaat</label><input class="fi" id="pw-pm" placeholder="0"></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Tanggal</label><input class="fdt" id="pw-tgl" type="date"></div><div class="fg"><label class="fl">Keterangan</label><input class="fi" id="pw-k" placeholder="Keterangan..."></div></div>
+    <div class="apf"><button class="btn btn-sm" onclick="closeAP('ap-pw')">Batal</button><button class="btn btn-sm btn-g" onclick="addPW()"><i class="ti ti-check"></i>Simpan</button></div>
+  </div>
+  <div class="mg" id="pwm"></div>
+  <div class="filters-bar">
+    <label>Tahun:</label><select class="fi-sm" id="pwf-year" onchange="renderPW()"><option value="">Semua</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select>
+    <label style="margin-left:8px">Bulan:</label><select class="fi-sm" id="pwf-month" onchange="renderPW()"><option value="">Semua</option><option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option><option value="04">Apr</option><option value="05">Mei</option><option value="06">Jun</option><option value="07">Jul</option><option value="08">Agu</option><option value="09">Sep</option><option value="10">Okt</option><option value="11">Nov</option><option value="12">Des</option></select>
+    <input class="fi-sm" id="pwf-q" placeholder="Cari..." oninput="renderPW()" style="width:130px">
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ct">Pengelolaan Wakaf Uang</div><div class="cs2">Manajemen & distribusi dana wakaf uang</div></div>
+    <div class="tw"><table><thead><tr><th>Program</th><th>Sumber Dana</th><th class="tn">Nominal (Rp)</th><th class="tn">Penerima Manfaat</th><th>Tanggal</th><th>Keterangan</th><th></th></tr></thead><tbody id="tb-pw"></tbody></table></div>
+  </div>
+</div>
+
+<!-- ASET -->
+<div id="pg-aset" class="page">
+  <div class="ap" id="ap-aset">
+    <div class="apt" id="aset-title">Tambah Aset Baru</div>
+    <div class="gr2"><div class="fg"><label class="fl">Nama Aset</label><input class="fi" id="na-n" placeholder="Nama aset..."></div><div class="fg"><label class="fl">Wakif / Investor</label><input class="fi" id="na-w" placeholder="Nama wakif..."></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Lokasi</label><input class="fi" id="na-l" placeholder="Kota, Provinsi..."></div><div class="fg"><label class="fl">Peruntukan</label><input class="fi" id="na-pu" placeholder="Rumah Quran / Masjid..."></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Status</label><select class="fse" id="na-st"><option>Wakaf Selamanya</option><option>Wakaf Temporer</option><option>Investasi Temporer</option></select></div><div class="fg"><label class="fl">Tipe</label><select class="fse" id="na-tp"><option>properti</option><option>masjid</option><option>tanah</option><option>infrastruktur</option><option>investasi</option></select></div></div>
+    <div class="gr2" style="margin-top:9px"><div class="fg"><label class="fl">Nilai (Rp)</label><input class="fi" id="na-nv" placeholder="1.000.000.000"></div><div class="fg"><label class="fl">Tahun</label><input class="fi" id="na-th" placeholder="2024– / 2024–2026"></div></div>
+    <div class="apf"><button class="btn btn-sm" onclick="cancelAset()">Batal</button><button class="btn btn-sm btn-g" onclick="saveAset()"><i class="ti ti-check"></i>Simpan</button></div>
+  </div>
+  <div class="mg" id="am"></div>
+  <div class="filters-bar">
+    <label>Status:</label><select class="fi-sm" id="af-st" onchange="renderA()"><option value="">Semua</option><option>Wakaf Selamanya</option><option>Wakaf Temporer</option><option>Investasi Temporer</option></select>
+    <label style="margin-left:8px">Tipe:</label><select class="fi-sm" id="af-tp" onchange="renderA()"><option value="">Semua</option><option>properti</option><option>masjid</option><option>tanah</option><option>infrastruktur</option><option>investasi</option></select>
+    <input class="fi-sm" id="af-q" placeholder="Cari nama/lokasi..." oninput="renderA()" style="width:160px">
+    <label style="margin-left:8px">Sort:</label><select class="fi-sm" id="af-sort" onchange="renderA()"><option value="nama">Nama</option><option value="nilai">Nilai</option></select>
+  </div>
+  <div class="tabs">
+    <button class="tab on" onclick="atabSwitch('grid',this)">Kartu</button>
+    <button class="tab" onclick="atabSwitch('table',this)">Tabel</button>
+  </div>
+  <div id="ag-view"><div class="ag" id="agrid"></div></div>
+  <div id="at-view" style="display:none"><div class="card"><div class="tw"><table><thead><tr><th>#</th><th>Nama Aset</th><th>Wakif</th><th>Lokasi</th><th>Peruntukan</th><th>Status</th><th class="tn">Nilai (Rp)</th><th>Tahun</th><th></th></tr></thead><tbody id="tb-a"></tbody></table></div></div></div>
+</div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /app -->
+
+<!-- PROJECT MODAL -->
+<div class="ov" id="pmodal" onclick="if(event.target===this)closePM()">
+  <div class="mbox">
+    <div class="mhd">
+      <div class="mhc">
+        <input type="text" class="fi" id="m-name" style="font-size:15px;font-weight:600;margin-bottom:8px" onchange="savePF('name',this.value)">
+        <div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center">
+          <select class="fse" id="m-st" style="width:auto;font-size:12px" onchange="savePF('status',this.value)"><option>On Going</option><option>On Hold</option><option>Done</option></select>
+          <select class="fse" id="m-div" style="width:auto;font-size:12px" onchange="savePF('divisi',this.value)"><option>Rumah Quran</option><option>Masjid BSI</option><option>Fundraising</option><option>Pengelolaan Aset</option><option>Program</option></select>
+          <input type="text" class="fi" id="m-pic" style="width:110px;font-size:12px" placeholder="PIC..." onchange="savePF('pic',this.value)">
+        </div>
+      </div>
+      <button class="mclose" onclick="closePM()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="mbody">
+      <div style="font-size:10px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.6px;margin-bottom:9px">Log Aktivitas</div>
+      <ul class="alog" id="m-log"></ul>
+      <div style="border-top:1px solid var(--bd);padding-top:13px;margin-top:13px">
+        <div style="font-size:12px;font-weight:600;color:var(--mu);margin-bottom:7px">Tambah Catatan Baru</div>
+        <textarea class="fta" id="m-note" placeholder="Update terbaru..." style="height:58px"></textarea>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:9px">
+          <button class="btn btn-sm btn-r" onclick="delProject()"><i class="ti ti-trash"></i>Hapus Project</button>
+          <div style="display:flex;gap:7px;align-items:center">
+            <input type="date" class="fdt" id="m-date" style="width:auto;font-size:12px">
+            <button class="btn btn-sm btn-g" onclick="addNote()"><i class="ti ti-check"></i>Simpan Catatan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var TODAY=new Date().toISOString().split('T')[0];
+var CUR='dashboard',TV='kanban',AMID=null,AEID=null,HVIEW='detail';
+var GLOBAL_YEAR='2026';
+
+function sg(id){return document.getElementById(id);}
+function fmt(n){var num=parseNum(n);if(isNaN(num))return '0';return num.toLocaleString('id-ID');}
+function parseNum(s){if(typeof s==='number')return s;return parseFloat(String(s||0).replace(/\./g,'').replace(/,/g,'.'))||0;}
+function ex(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function ls(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function lss(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function pc(a,b){return b?Math.min(Math.round(parseNum(a)/parseNum(b)*100),100):0;}
+function pbc(p){return p>=70?'g':p>=40?'a':'r';}
+function nid(arr){return arr.length?Math.max.apply(null,arr.map(function(x){return x.id;}))+1:1;}
+function dicol(d){return{Fundraising:'bB','Masjid BSI':'bG','Rumah Quran':'bP','Pengelolaan Aset':'bA','Program':'bGR'}[d]||'bGR';}
+function diico(d){return{Fundraising:'ti-heart-handshake','Masjid BSI':'ti-building-mosque','Rumah Quran':'ti-book','Pengelolaan Aset':'ti-briefcase','Program':'ti-users'}[d]||'ti-folder';}
+function sbadge(s){var m={Done:'bG','On Hold':'bR','On Going':'bB'},i={Done:'ti-check','On Hold':'ti-alert-circle','On Going':'ti-refresh'};return '<span class="bdg '+(m[s]||'bGR')+'"><i class="ti '+(i[s]||'ti-circle')+'" style="font-size:9px"></i> '+ex(s)+'</span>';}
+function aico(t){return{masjid:{i:'ti-building-mosque',bg:'#E8F7F2',c:'#0F6E56'},properti:{i:'ti-home',bg:'#F5F3FF',c:'#6D28D9'},tanah:{i:'ti-map',bg:'#FEF3C7',c:'#92400E'},infrastruktur:{i:'ti-droplet',bg:'#EFF6FF',c:'#1D4ED8'},investasi:{i:'ti-chart-line',bg:'#F4F4F5',c:'#52525B'}}[t]||{i:'ti-folder',bg:'#F4F4F5',c:'#52525B'};}
+function asbadge(st){var m={'Wakaf Selamanya':'bG','Wakaf Temporer':'bA','Investasi Temporer':'bB'};return '<span class="bdg '+(m[st]||'bGR')+'" style="font-size:10px">'+ex(st)+'</span>';}
+// Month-value input (YYYY-MM) to display string
+function mDisp(ym){if(!ym)return '—';var p=ym.split('-');if(p.length<2)return ym;var mn=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];return mn[parseInt(p[1])-1]+' '+p[0];}
+// Extract year/month from YYYY-MM-DD or YYYY-MM
+function getYear(d){return d?String(d).substring(0,4):'';}
+function getMonth(d){if(!d)return '';var p=String(d).split('-');return p.length>=2?p[1]:'';}
+
+// ==================== DATA ====================
+var H=ls('wag_h3',[
+  {id:1,p:'Wakaf Sumur',c:'BYOND',months:[{d:'2026-01',v:134671438},{d:'2026-02',v:141239183},{d:'2026-03',v:372556658},{d:'2026-04',v:168681440}]},
+  {id:2,p:'Wakaf Bangun Masjid',c:'BYOND',months:[{d:'2026-01',v:64315119},{d:'2026-02',v:79883935},{d:'2026-03',v:167022266},{d:'2026-04',v:59486682}]},
+  {id:3,p:'Wakaf Pendidikan',c:'BYOND',months:[{d:'2026-01',v:28188176},{d:'2026-02',v:15646325},{d:'2026-03',v:41727608},{d:'2026-04',v:20802347}]},
+  {id:4,p:'Wakaf Asrama Putri & Sarana Pend.',c:'BYOND',months:[{d:'2026-01',v:0},{d:'2026-02',v:18138076},{d:'2026-03',v:64249755},{d:'2026-04',v:14600583}]},
+  {id:5,p:'Wakaf Dana Abadi Seri Insan BSI',c:'Rekening & Transfer',months:[{d:'2026-01',v:0},{d:'2026-02',v:0},{d:'2026-03',v:0},{d:'2026-04',v:123873443}]},
+  {id:6,p:'Wakaf Asrama Putri (Rek & Transfer)',c:'Rekening & Transfer',months:[{d:'2026-01',v:0},{d:'2026-02',v:0},{d:'2026-03',v:0},{d:'2026-04',v:92284436}]},
+  {id:7,p:'Wakaf Uang BSI Maslahat',c:'BYOND',months:[{d:'2026-01',v:8106002},{d:'2026-02',v:8335375},{d:'2026-03',v:14754493},{d:'2026-04',v:3424223}]},
+  {id:8,p:'Wakaf Dana Abadi (BYOND)',c:'BYOND',months:[{d:'2026-01',v:0},{d:'2026-02',v:7035000},{d:'2026-03',v:17630026},{d:'2026-04',v:1692200}]},
+  {id:9,p:'Wakaf Sumur (digital)',c:'digital.bsimaslahat.or.id',months:[{d:'2026-01',v:962670},{d:'2026-02',v:1380122},{d:'2026-03',v:6675217},{d:'2026-04',v:60026}]},
+  {id:10,p:'Wakaf Al Quran Maqashid',c:'digital.bsimaslahat.or.id',months:[{d:'2026-01',v:0},{d:'2026-02',v:100081},{d:'2026-03',v:2250134},{d:'2026-04',v:2370128}]},
+  {id:11,p:'Wakaf Uang Gunung Kidul',c:'digital.bsimaslahat.or.id',months:[{d:'2026-01',v:1416180},{d:'2026-02',v:200040},{d:'2026-03',v:1192176},{d:'2026-04',v:1780109}]},
+  {id:12,p:'Lainnya (digital)',c:'digital.bsimaslahat.or.id',months:[{d:'2026-01',v:1383196},{d:'2026-02',v:583384},{d:'2026-03',v:4081934},{d:'2026-04',v:110467}]}
+]);
+var TH=ls('wag_th2',[{id:1,jenis:'Penerimaan Wakaf Uang & Wakaf Melalui Uang',t:3000000000,r:1400000000},{id:2,jenis:'Penerimaan Wakaf Aset',t:1500000000,r:0},{id:3,jenis:'Hasil Pengembangan Wakaf',t:2000000000,r:864000000}]);
+var SP=ls('wag_sp3',[
+  {id:1,p:'BSI Rumah Tahfidz',s:'Zakat UPZ BSI',d:'Rumah Quran',t:12161000000,months:[{d:'2026-01',v:100000000},{d:'2026-02',v:296000000},{d:'2026-03',v:662000000},{d:'2026-04',v:442000000}]},
+  {id:2,p:'BSI Rumah Tahfidz',s:'Infak Umum',d:'Rumah Quran',t:1066000000,months:[{d:'2026-01',v:3000000},{d:'2026-02',v:4000000},{d:'2026-03',v:42000000},{d:'2026-04',v:54000000}]},
+  {id:3,p:'14 Masjid BSI',s:'Zakat UPZ BSI',d:'Masjid BSI',t:3320000000,months:[{d:'2026-01',v:197000000},{d:'2026-02',v:218000000},{d:'2026-03',v:218000000},{d:'2026-04',v:448000000}]},
+  {id:4,p:'14 Masjid BSI',s:'Infak Umum',d:'Masjid BSI',t:4620000000,months:[{d:'2026-01',v:43000000},{d:'2026-02',v:298000000},{d:'2026-03',v:48000000},{d:'2026-04',v:1792000000}]},
+  {id:5,p:'14 Masjid BSI',s:'Dana Sosial',d:'Masjid BSI',t:2520000000,months:[{d:'2026-01',v:131000000},{d:'2026-02',v:131000000},{d:'2026-03',v:131000000},{d:'2026-04',v:210000000}]}
+]);
+var SU=ls('wag_su2',[{id:1,p:'Investasi SR015',j:'SR',n:400000000,pm:0,tm:'2022-01',ta:'2024-01',k:'Sudah jatuh tempo'},{id:2,p:'Investasi CWLS 004',j:'CWLS',n:250000000,pm:0,tm:'2023-01',ta:'2025-01',k:'Untuk Rumah Quran'},{id:3,p:'Investasi SR017',j:'SR',n:1200000000,pm:0,tm:'2023-01',ta:'2025-01',k:'Pendidikan, Kesehatan, Ekonomi'},{id:4,p:'Deposito Special Nisbah',j:'Deposito',n:1050000000,pm:0,tm:'2024-01',ta:'2024-12',k:''},{id:5,p:'Investasi CWLD Beasiswa IPB',j:'CWLD',n:200000000,pm:0,tm:'2023-01',ta:'2025-01',k:'Beasiswa mahasiswa IPB'}]);
+var SM=ls('wag_sm2',[{id:1,p:'Wakaf Sumur Bor — Subang',j:'Sumur Bor',l:'Subang, Jawa Barat',n:350000000,pm:0,tgl:'2024-07-01',k:'Cigoong Farm'},{id:2,p:'Wakaf Sumur Bor — Grobogan',j:'Sumur Bor',l:'Grobogan, Jawa Tengah',n:169950000,pm:0,tgl:'2024-09-01',k:'Masjid Al Kahfi Senggot'},{id:3,p:'Wakaf Bangun Masjid BSI Cipularang',j:'Masjid / Musholla',l:'Purwakarta, Jawa Barat',n:0,pm:500,tgl:'2020-01-01',k:'Rest Area KM 88A'},{id:4,p:'Wakaf Bangun Masjid BSI Bakauheni',j:'Masjid / Musholla',l:'Lampung Selatan, Lampung',n:0,pm:2000,tgl:'2023-01-01',k:''},{id:5,p:'Wakaf Masjid Ash Shabirin',j:'Masjid / Musholla',l:'Bandung, Jawa Barat',n:2500000000,pm:0,tgl:'2024-01-01',k:''}]);
+var IH=ls('wag_ih2',[{id:1,p:'Penyaluran Imbal Hasil CWLS 001',s:'CWLS 001',n:45000000,pm:120,tgl:'2024-03-15',k:'Periode Q1 2024'},{id:2,p:'Penyaluran Imbal Hasil SR015',s:'SR015',n:18000000,pm:50,tgl:'2024-06-20',k:'Semester 1 2024'},{id:3,p:'Penyaluran Imbal Hasil Deposito',s:'Deposito',n:12500000,pm:30,tgl:'2024-09-01',k:'Q3 2024'}]);
+var PW=ls('wag_pw2',[{id:1,p:'Pengelolaan CWLS 004',s:'CWLS',n:250000000,pm:0,tgl:'2023-06-01',k:'Rumah Quran'},{id:2,p:'Pengelolaan SR017',s:'SR',n:1200000000,pm:0,tgl:'2023-09-15',k:'Pendidikan & Kesehatan'},{id:3,p:'Pengelolaan Deposito BSI',s:'Deposito',n:1050000000,pm:0,tgl:'2024-02-01',k:'Special Nisbah'}]);
+var A=ls('wag_a2',[{id:1,nama:'Rumah Quran — Cikupa',wakif:'Gunawan Arif Hartoyo',lokasi:'Tangerang, Banten',pu:'Rumah Quran',status:'Wakaf Temporer',tipe:'properti',nilai:0,tahun:'2021–2026'},{id:2,nama:'Rumah Quran — Magetan',wakif:'Tri Budi Tjahjono H',lokasi:'Magetan, Jawa Timur',pu:'Rumah Quran',status:'Wakaf Temporer',tipe:'properti',nilai:0,tahun:'2022–2026'},{id:3,nama:'Rumah Quran — Cimahi',wakif:'Anton Sukarna',lokasi:'Cimahi, Jawa Barat',pu:'Rumah Quran',status:'Wakaf Temporer',tipe:'properti',nilai:0,tahun:'2021–2026'},{id:4,nama:'Rumah Quran — Bogor',wakif:'Ficko Hardowiseto',lokasi:'Bogor, Jawa Barat',pu:'Rumah Quran',status:'Wakaf Temporer',tipe:'properti',nilai:0,tahun:'2022–2027'},{id:5,nama:'Tanah — Gowa',wakif:'Dr. H. Hasan Hasyim',lokasi:'Gowa, Sulawesi Selatan',pu:'Program Desa Wakaf',status:'Wakaf Selamanya',tipe:'tanah',nilai:1537000000,tahun:'2022–'},{id:6,nama:'Rumah Quran — Semarang',wakif:'Achmad Suharyono',lokasi:'Semarang, Jawa Tengah',pu:'Rumah Quran',status:'Wakaf Temporer',tipe:'properti',nilai:0,tahun:'2023–2028'},{id:7,nama:'Masjid Cipularang',wakif:'Masyarakat Umum',lokasi:'Purwakarta, Jawa Barat',pu:'Masjid',status:'Wakaf Selamanya',tipe:'masjid',nilai:0,tahun:'2020–'},{id:8,nama:'Masjid Bakauheni',wakif:'Masyarakat Umum',lokasi:'Lampung Selatan, Lampung',pu:'Masjid',status:'Wakaf Selamanya',tipe:'masjid',nilai:0,tahun:'2023–'},{id:9,nama:'Masjid Ash Shabirin',wakif:'Andri Vendredi',lokasi:'Bandung, Jawa Barat',pu:'Masjid',status:'Wakaf Selamanya',tipe:'masjid',nilai:2500000000,tahun:'2024–'},{id:10,nama:'Rumah Quran — Surakarta',wakif:'Kristiono',lokasi:'Surakarta, Jawa Tengah',pu:'Rumah Quran',status:'Wakaf Selamanya',tipe:'properti',nilai:5595000000,tahun:'2024–'},{id:11,nama:'Tanah — Lebak Banten',wakif:'Nardi Winarno',lokasi:'Lebak, Banten',pu:'Wakaf Produktif',status:'Wakaf Selamanya',tipe:'tanah',nilai:100000000,tahun:'2020–'},{id:12,nama:'Sumur Bor — Subang',wakif:'BSI Maslahat',lokasi:'Subang, Jawa Barat',pu:'Air Bersih',status:'Wakaf Selamanya',tipe:'infrastruktur',nilai:350000000,tahun:'2024–'},{id:13,nama:'Sumur Bor — Grobogan',wakif:'Ir. Hildah',lokasi:'Grobogan, Jawa Tengah',pu:'Air Bersih',status:'Wakaf Selamanya',tipe:'infrastruktur',nilai:169950000,tahun:'2024–'},{id:14,nama:'Investasi SR017',wakif:'BSI Maslahat',lokasi:'BSI',pu:'Pendidikan, Kesehatan, Ekonomi',status:'Investasi Temporer',tipe:'investasi',nilai:1200000000,tahun:'2023–2025'},{id:15,nama:'Deposito Special Nisbah',wakif:'BSI Maslahat',lokasi:'BSI',pu:'Umum',status:'Investasi Temporer',tipe:'investasi',nilai:1050000000,tahun:'2024–'},{id:16,nama:'Investasi CWLD (Beasiswa IPB)',wakif:'BSI Maslahat',lokasi:'BSI',pu:'Beasiswa',status:'Investasi Temporer',tipe:'investasi',nilai:200000000,tahun:'2023–2025'}]);
+var P=ls('wag_p2',[{id:1,name:'Wakaf Klinik (Hemodialisa)',divisi:'Pengelolaan Aset',pic:'Azizyah',status:'On Hold',bm:1,bs:6,log:[{date:'2025-12-08',text:'Pembuatan financial forecasting'},{date:'2026-04-03',text:'Fokus jadi klinik hemodialisa. Survei DAK & gambar 3D dibantu FSG'},{date:'2026-05-04',text:'Rencana studi banding ke Raycare Klinik, belum ada respons'}]},{id:2,name:'Optimalisasi Aset Wakaf Belum Produktif',divisi:'Pengelolaan Aset',pic:'Kays',status:'On Going',bm:1,bs:9,log:[{date:'2026-01-05',text:'Koordinasi awal — Cikotok, Ponorogo, Lebak'},{date:'2026-02-23',text:'Diskusi ESG untuk program UMKM'}]},{id:3,name:'Pembuatan SOP / PTO Wakaf',divisi:'Pengelolaan Aset',pic:'Dodi',status:'On Hold',bm:1,bs:12,log:[{date:'2026-04-03',text:'Tidak pakai vendor, dibuat mandiri. Rencana SMT 2 2026'}]},{id:4,name:'Wakaf Bangun Masjid 2026',divisi:'Masjid BSI',pic:'Azizyah',status:'On Going',bm:1,bs:8,log:[{date:'2026-04-03',text:'Peletakan batu pertama 20–30 April'}]},{id:5,name:'Konsep Rumah Quran Berbayar (LAZ)',divisi:'Rumah Quran',pic:'Kays',status:'On Going',bm:1,bs:6,log:[{date:'2026-05-06',text:'Pembuatan opini DPS'}]},{id:6,name:'Nota CWLD Pembiayaan',divisi:'Pengelolaan Aset',pic:'Azizyah',status:'Done',bm:1,bs:4,log:[{date:'2026-05-06',text:'Semua berkas diserahkan ke BSI'}]},{id:7,name:'Wakaf Quran Maqashid Syariah',divisi:'Fundraising',pic:'Dodi',status:'On Going',bm:1,bs:6,log:[{date:'2026-04-10',text:'Penyesuaian nota dan draft PKS'}]},{id:8,name:'Review PKS ASDP',divisi:'Pengelolaan Aset',pic:'Dodi',status:'On Hold',bm:1,bs:5,log:[{date:'2026-05-06',text:'Legal sedang cek lagi hasil review PKS ASDP'}]},{id:9,name:'Program Prudential Syariah',divisi:'Fundraising',pic:'Kays',status:'On Going',bm:2,bs:6,log:[{date:'2026-05-06',text:'Menunggu persetujuan nota'}]},{id:10,name:'Dana Abadi BSI (Seri Insan BSI)',divisi:'Fundraising',pic:'Kays',status:'On Going',bm:2,bs:10,log:[{date:'2026-04-03',text:'Sudah rilis di BYOND'}]},{id:11,name:'Kerjasama IIQ',divisi:'Fundraising',pic:'Dodi',status:'Done',bm:2,bs:4,log:[{date:'2026-04-25',text:'Sudah tayang di BYOND'}]},{id:12,name:'RMI PWNU Jawa Tengah',divisi:'Fundraising',pic:'Dodi',status:'On Going',bm:4,bs:6,log:[{date:'2026-05-10',text:'Video campaign acara Banjarnegara'}]},{id:13,name:'Wakaf Produktif — Sapi Perah',divisi:'Pengelolaan Aset',pic:'Kays',status:'On Going',bm:5,bs:12,log:[{date:'2026-05-01',text:'Meeting dengan KPBSU di Lembang'}]},{id:14,name:'Legalitas Rumah Quran',divisi:'Rumah Quran',pic:'Kays',status:'On Going',bm:1,bs:5,log:[{date:'2026-04-09',text:'Kunjungan ke Solo'}]},{id:15,name:'Optimalisasi Santri Rumah Quran',divisi:'Rumah Quran',pic:'Kays',status:'On Going',bm:1,bs:12,log:[{date:'2026-04-10',text:'30 santri sudah terdaftar'}]},{id:16,name:'Empowerment Eksisting Masjid & RQ',divisi:'Program',pic:'Azizyah',status:'On Going',bm:1,bs:12,log:[{date:'2026-04-10',text:'Visit Makassar & Medan'}]},{id:17,name:'Renovasi Masjid (Cipali, Cipularang, Bakauheni)',divisi:'Masjid BSI',pic:'Azizyah',status:'On Going',bm:1,bs:4,log:[{date:'2026-04-03',text:'Nota maintenance sudah di Pak Gun'}]},{id:18,name:'Wakaf Kolaborasi BSI Dubai',divisi:'Fundraising',pic:'Kays',status:'On Going',bm:5,bs:12,log:[{date:'2026-05-01',text:'Menyusun program wakaf masjid & sumur untuk BSI Dubai'}]}]);
+
+// ==================== NAV ====================
+var PI={dashboard:{t:'Dashboard',s:'BSI Maslahat · Waqf Group'},tracker:{t:'Project Tracker',s:'Kanban · Timeline · Log Aktivitas'},himpun:{t:'Data Penghimpunan',s:'Realisasi per Program & Channel'},salprog:{t:'Penyaluran Program',s:'Didik Umat · Simpati Umat · dan lainnya'},saluang:{t:'Penyaluran Wakaf Uang',s:'CWLS · SR · Deposito · Instrumen Keuangan'},salmelalui:{t:'Penyaluran Wakaf Melalui Uang',s:'Sumur Bor · Masjid · Infrastruktur'},imbalhasil:{t:'Penyaluran Imbal Hasil',s:'Distribusi hasil investasi wakaf'},pengelolaan:{t:'Pengelolaan Wakaf Uang',s:'Manajemen & distribusi dana wakaf uang'},aset:{t:'Kepemilikan Aset Wakaf',s:'Inventaris Aset BSI Maslahat'}};
+
+function go(pg,fd){
+  CUR=pg;
+  document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});
+  document.querySelectorAll('.ni').forEach(function(el){el.classList.remove('on');});
+  var pel=sg('pg-'+pg);if(pel)pel.classList.add('active');
+  var info=PI[pg]||{t:pg,s:''};sg('ptitle').textContent=info.t;sg('psub').textContent=info.s;
+  if(pg==='tracker'){if(fd!==undefined)sg('fd').value=fd||'';renderK();}
+  if(pg==='himpun')renderH();
+  if(pg==='salprog')renderSP();
+  if(pg==='saluang')renderSU();
+  if(pg==='salmelalui')renderSM();
+  if(pg==='imbalhasil')renderIH();
+  if(pg==='pengelolaan')renderPW();
+  if(pg==='aset')renderA();
+  if(pg==='dashboard')renderD();
+}
+document.querySelectorAll('.ni').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.ni').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');});});
+function handleAdd(){var m={tracker:'ap-proj',himpun:'ap-himpun',salprog:'ap-sp',saluang:'ap-su',salmelalui:'ap-sm',imbalhasil:'ap-ih',pengelolaan:'ap-pw',aset:'ap-aset'};var pid=m[CUR];if(pid)sg(pid).classList.toggle('open');}
+function closeAP(id){sg(id).classList.remove('open');}
+function applyGlobalYear(){GLOBAL_YEAR=sg('global-year').value;renderD();}
+
+// ==================== EXPORT ====================
+function handleExport(){
+  var format=window.confirm('Export sebagai CSV?\n(OK = CSV, Cancel = tampilkan ringkasan teks)')?'csv':'text';
+  var data=[];
+  var name=CUR;
+  if(CUR==='himpun'){
+    data.push('Program,Channel,Periode,Nilai (Rp)');
+    H.forEach(function(r){r.months.forEach(function(m){data.push([r.p,r.c,m.d,m.v].join(','));});});
+    name='penghimpunan';
+  } else if(CUR==='salprog'){
+    data.push('Program,Sumber Dana,Divisi,Periode,Realisasi (Rp),Target (Rp)');
+    SP.forEach(function(r){r.months.forEach(function(m){data.push([r.p,r.s,r.d,m.d,m.v,r.t].join(','));});});
+    name='penyaluran_program';
+  } else if(CUR==='saluang'){
+    data.push('Program,Jenis,Nominal (Rp),Penerima Manfaat,Tgl Mulai,Tgl Berakhir,Keterangan');
+    SU.forEach(function(r){data.push([r.p,r.j,r.n,r.pm,r.tm,r.ta,r.k].join(','));});
+    name='penyaluran_wakaf_uang';
+  } else if(CUR==='salmelalui'){
+    data.push('Program,Jenis,Lokasi,Nominal (Rp),Penerima Manfaat,Tanggal,Keterangan');
+    SM.forEach(function(r){data.push([r.p,r.j,r.l,r.n,r.pm,r.tgl,r.k].join(','));});
+    name='penyaluran_wakaf_melalui_uang';
+  } else if(CUR==='imbalhasil'){
+    data.push('Program,Sumber Dana,Nominal (Rp),Penerima Manfaat,Tanggal,Keterangan');
+    IH.forEach(function(r){data.push([r.p,r.s,r.n,r.pm,r.tgl,r.k].join(','));});
+    name='imbal_hasil';
+  } else if(CUR==='pengelolaan'){
+    data.push('Program,Sumber Dana,Nominal (Rp),Penerima Manfaat,Tanggal,Keterangan');
+    PW.forEach(function(r){data.push([r.p,r.s,r.n,r.pm,r.tgl,r.k].join(','));});
+    name='pengelolaan_wakaf_uang';
+  } else if(CUR==='aset'){
+    data.push('Nama Aset,Wakif,Lokasi,Peruntukan,Status,Tipe,Nilai (Rp),Tahun');
+    A.forEach(function(r){data.push([r.nama,r.wakif,r.lokasi,r.pu,r.status,r.tipe,r.nilai,r.tahun].join(','));});
+    name='kepemilikan_aset';
+  } else if(CUR==='tracker'){
+    data.push('Nama Project,Divisi,PIC,Status,Bulan Mulai,Bulan Selesai');
+    P.forEach(function(r){data.push([r.name,r.divisi,r.pic,r.status,r.bm,r.bs].join(','));});
+    name='project_tracker';
+  } else {
+    alert('Export tersedia di masing-masing halaman Data & Target atau Project Tracker.');
+    return;
+  }
+  if(data.length<=1){alert('Tidak ada data untuk di-export.');return;}
+  var csv='\uFEFF'+data.join('\n');
+  var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;a.download=name+'_'+new Date().toISOString().split('T')[0]+'.csv';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+
+// ==================== DASHBOARD ====================
+function himpunFiltered(yr){
+  var tot=0;
+  H.forEach(function(r){r.months.forEach(function(m){if(!yr||getYear(m.d)===yr)tot+=m.v;});});
+  return tot;
+}
+function spFiltered(yr){
+  var tot=0;
+  SP.forEach(function(r){r.months.forEach(function(m){if(!yr||getYear(m.d)===yr)tot+=m.v;});});
+  return tot;
+}
+function renderD(){
+  var yr=GLOBAL_YEAR;
+  sg('dash-year-label').textContent=yr||'Semua Tahun';
+  sg('dash-year-label2').textContent=yr||'Semua Tahun';
+  var og=P.filter(function(x){return x.status==='On Going';}).length;
+  var oh=P.filter(function(x){return x.status==='On Hold';}).length;
+  var dn=P.filter(function(x){return x.status==='Done';}).length;
+  var totH=himpunFiltered(yr);
+  var totSP=spFiltered(yr);
+  sg('dm').innerHTML='<div class="met g"><div class="ml">Total Penghimpunan'+(yr?' '+yr:'')+'</div><div class="mv">Rp '+fmt(totH)+'</div><div class="ms">semua program</div></div><div class="met b"><div class="ml">Total Penyaluran Program'+(yr?' '+yr:'')+'</div><div class="mv">Rp '+fmt(totSP)+'</div><div class="ms">realisasi</div></div><div class="met p"><div class="ml">Project On Going</div><div class="mv">'+og+'</div><div class="ms">aktif</div></div><div class="met r"><div class="ml">Project On Hold</div><div class="mv">'+oh+'</div><div class="ms">butuh follow-up</div></div><div class="met g"><div class="ml">Project Done</div><div class="mv">'+dn+'</div><div class="ms">selesai</div></div>';
+
+  // Target penghimpunan
+  var tTH=TH.reduce(function(a,r){return a+parseNum(r.t);},0);
+  var tRH=TH.reduce(function(a,r){return a+parseNum(r.r);},0);
+  var pTH=pc(tRH,tTH);
+  sg('dash-target-h').innerHTML='<div class="prog-card-nums"><div class="prog-card-num">Target: <span>Rp '+fmt(tTH)+'</span></div><div class="prog-card-num">Realisasi: <span style="color:var(--G)">Rp '+fmt(tRH)+'</span></div><div class="prog-card-num">Gap: <span style="color:var(--R)">Rp '+fmt(tTH-tRH)+'</span></div></div><div class="pb"><div class="pf '+pbc(pTH)+'" style="width:'+pTH+'%"></div></div><div style="font-size:12px;color:var(--mu);margin-top:5px">'+pTH+'% tercapai</div>'+
+  TH.map(function(r){var p=pc(parseNum(r.r),parseNum(r.t));return '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid #F4F4F5"><div style="flex:1"><div style="font-size:12px;font-weight:500">'+ex(r.jenis)+'</div><div style="display:flex;align-items:center;gap:8px;margin-top:4px"><div class="pb" style="width:100px"><div class="pf '+pbc(p)+'" style="width:'+p+'%"></div></div><span style="font-size:11px;color:var(--mu)">'+p+'%</span></div></div><div style="text-align:right;font-size:11px;color:var(--mu)">'+fmt(r.r)+' / '+fmt(r.t)+'</div></div>';}).join('');
+
+  // Target penyaluran program
+  var tTSP=SP.reduce(function(a,r){return a+parseNum(r.t);},0);
+  var tRSP=spFiltered(yr);
+  var pTSP=pc(tRSP,tTSP);
+  sg('dash-target-sp').innerHTML='<div class="prog-card-nums"><div class="prog-card-num">Target: <span>Rp '+fmt(tTSP)+'</span></div><div class="prog-card-num">Realisasi: <span style="color:var(--G)">Rp '+fmt(tRSP)+'</span></div><div class="prog-card-num">Gap: <span style="color:var(--R)">Rp '+fmt(tTSP-tRSP)+'</span></div></div><div class="pb"><div class="pf '+pbc(pTSP)+'" style="width:'+pTSP+'%"></div></div><div style="font-size:12px;color:var(--mu);margin-top:5px">'+pTSP+'% tercapai</div>'+
+  SP.map(function(r){var real=r.months.filter(function(m){return !yr||getYear(m.d)===yr;}).reduce(function(a,m){return a+m.v;},0);var p=pc(real,parseNum(r.t));return '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid #F4F4F5"><div style="flex:1"><div style="font-size:12px;font-weight:500">'+ex(r.p)+' <span style="font-size:10px;color:var(--mu)">('+ex(r.s)+')</span></div><div style="display:flex;align-items:center;gap:8px;margin-top:4px"><div class="pb" style="width:90px"><div class="pf '+pbc(p)+'" style="width:'+p+'%"></div></div><span style="font-size:11px;color:var(--mu)">'+p+'%</span></div></div><div style="text-align:right;font-size:11px;color:var(--mu)">'+fmt(real)+' / '+fmt(r.t)+'</div></div>';}).join('');
+
+  // Bar chart penghimpunan
+  var bars=H.slice(0,6).map(function(r){return{lb:r.p,v:r.months.filter(function(m){return !yr||getYear(m.d)===yr;}).reduce(function(a,m){return a+m.v;},0)};});
+  var mx=Math.max.apply(null,bars.map(function(b){return b.v;}));
+  var cols=['#1D9E75','#3B82F6','#F59E0B','#8B5CF6','#E24B4A','#A1A1AA'];
+  sg('dbar').innerHTML=bars.map(function(b,i){var h=mx?Math.round(b.v/mx*85)+10:10;return '<div class="bi"><div class="bval">'+fmt(b.v).substring(0,9)+'</div><div class="bfill" style="height:'+h+'px;background:'+cols[i]+'"></div><div class="blb">'+ex(b.lb.substring(0,20))+'</div></div>';}).join('');
+
+  // Divisi progress
+  var byd={};P.forEach(function(x){if(!byd[x.divisi])byd[x.divisi]={t:0,d:0,h:0};byd[x.divisi].t++;if(x.status==='Done')byd[x.divisi].d++;if(x.status==='On Hold')byd[x.divisi].h++;});
+  sg('ddiv').innerHTML=Object.keys(byd).map(function(d){var v=byd[d],p=pc(v.d,v.t);return '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:12px;display:flex;align-items:center;gap:5px"><i class="ti '+diico(d)+'" style="color:var(--G);font-size:12px"></i>'+ex(d)+'</span><span style="font-size:10px;color:var(--mu)">'+v.d+'/'+v.t+(v.h?' · '+v.h+' hold':'')+'</span></div><div class="pb"><div class="pf g" style="width:'+p+'%"></div></div></div>';}).join('');
+
+  // Hold list
+  var holds=P.filter(function(x){return x.status==='On Hold';});
+  sg('dhbadge').textContent=holds.length;
+  sg('dhold').innerHTML=holds.length?holds.map(function(p){var ll=p.log.length?p.log[p.log.length-1]:null;return '<div style="display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid #F4F4F5;cursor:pointer" onclick="openPM('+p.id+')"><i class="ti '+diico(p.divisi)+'" style="font-size:16px;color:var(--AM);flex-shrink:0"></i><div style="flex:1"><div style="font-size:13px;font-weight:600">'+ex(p.name)+'</div><div style="font-size:11px;color:var(--mu)">'+ex(p.divisi)+' · PIC: '+ex(p.pic)+'</div></div>'+(ll?'<span style="font-size:10px;color:var(--mu)">'+ll.date+'</span>':'')+sbadge(p.status)+'</div>';}).join(''):'<p style="color:var(--mu);font-size:13px;padding:8px 0">Tidak ada bottleneck.</p>';
+}
+
+// ==================== TRACKER ====================
+function fpjs(){var d=sg('fd').value,p=sg('fp').value,q=sg('fq').value.toLowerCase(),s=sg('fs').value;return P.filter(function(x){return(!d||x.divisi===d)&&(!p||x.pic===p)&&(!s||x.status===s)&&(!q||x.name.toLowerCase().includes(q));});}
+function setTV(v){TV=v;sg('vk').style.display=v==='kanban'?'block':'none';sg('vg').style.display=v==='gantt'?'block':'none';v==='gantt'?renderG():renderK();}
+function renderK(){var cols=['On Going','On Hold','Done'],fp=fpjs();sg('kboard').innerHTML=cols.map(function(col){var cs=fp.filter(function(x){return x.status===col;});return '<div class="kc"><div class="kch"><span class="kct">'+col+'</span><span class="kcn">'+cs.length+'</span></div>'+cs.map(function(p){var ll=p.log.length?p.log[p.log.length-1]:null;return '<div class="kcard" onclick="openPM('+p.id+')"><div class="kname">'+ex(p.name)+'</div>'+(ll?'<div class="kprev">'+ex(ll.text.substring(0,80))+'…</div>':'')+'<div class="kfoot"><span class="bdg '+dicol(p.divisi)+'" style="font-size:10px">'+ex(p.divisi)+'</span><span class="bdg bGR" style="font-size:10px"><i class="ti ti-user" style="font-size:9px"></i> '+ex(p.pic)+'</span></div>'+(ll?'<div class="kdate"><i class="ti ti-clock" style="font-size:9px"></i>'+ll.date+'</div>':'')+'</div>';}).join('')+'</div>';}).join('');}
+function renderG(){var fp=fpjs(),bc={'On Going':'#3B82F6','On Hold':'#F59E0B','Done':'#1D9E75'};var mn=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];sg('gantt').innerHTML='<div class="ghd"><div class="glb">Project</div><div class="gms">'+mn.map(function(m){return '<div class="gm">'+m+'</div>';}).join('')+'</div></div>'+fp.map(function(p){var s=(p.bm||1)-1,e=(p.bs||12)-1;return '<div class="grow"><div class="grl" onclick="openPM('+p.id+')" title="'+ex(p.name)+'">'+ex(p.name)+'</div><div class="gtr"><div class="gbar" style="left:'+(s/12*100).toFixed(1)+'%;width:'+((e-s+1)/12*100).toFixed(1)+'%;background:'+(bc[p.status]||'#999')+'">'+ex(p.pic)+'</div></div></div>';}).join('');}
+function addProject(){var n=sg('np-n').value.trim();if(!n){alert('Nama project harus diisi!');return;}P.push({id:nid(P),name:n,divisi:sg('np-d').value,pic:sg('np-p').value||'—',status:sg('np-s').value,bm:parseInt(sg('np-bm').value),bs:parseInt(sg('np-bs').value),log:[{date:TODAY,text:sg('np-note').value||'Project dibuat'}]});lss('wag_p2',P);['np-n','np-p','np-note'].forEach(function(x){sg(x).value='';});closeAP('ap-proj');renderK();renderD();}
+
+// ==================== MODAL ====================
+function openPM(id){AMID=id;var p=P.find(function(x){return x.id===id;});if(!p)return;sg('m-name').value=p.name;sg('m-st').value=p.status;sg('m-div').value=p.divisi;sg('m-pic').value=p.pic;sg('m-date').value=TODAY;sg('m-note').value='';sg('m-log').innerHTML=p.log.map(function(l){return '<li class="ali"><div class="adot"></div><div class="adate">'+l.date+'</div><div class="atext">'+ex(l.text)+'</div></li>';}).join('');sg('pmodal').classList.add('open');}
+function closePM(){sg('pmodal').classList.remove('open');}
+function savePF(f,v){if(!AMID)return;var p=P.find(function(x){return x.id===AMID;});if(!p)return;p[f]=v;lss('wag_p2',P);renderK();renderD();}
+function addNote(){var note=sg('m-note').value.trim();if(!note){alert('Tulis catatan!');return;}if(!AMID)return;var p=P.find(function(x){return x.id===AMID;});if(!p)return;p.log.push({date:sg('m-date').value||TODAY,text:note});lss('wag_p2',P);sg('m-note').value='';sg('m-log').innerHTML=p.log.map(function(l){return '<li class="ali"><div class="adot"></div><div class="adate">'+l.date+'</div><div class="atext">'+ex(l.text)+'</div></li>';}).join('');renderK();renderD();}
+function delProject(){if(!AMID||!confirm('Hapus project ini?'))return;P=P.filter(function(x){return x.id!==AMID;});lss('wag_p2',P);closePM();renderK();renderD();}
+
+// ==================== PENGHIMPUNAN ====================
+function setHView(v){HVIEW=v;['compact','detail'].forEach(function(x){sg('hview-'+x).classList.toggle('on',x===v);});renderH();}
+function htab(t,el){document.querySelectorAll('#pg-himpun .tab').forEach(function(b){b.classList.remove('on');});el.classList.add('on');sg('hp-prog').style.display=t==='prog'?'block':'none';sg('hp-ch').style.display=t==='ch'?'block':'none';sg('hp-tgt').style.display=t==='tgt'?'block':'none';if(t==='ch')renderHch();if(t==='tgt')renderHtgt();}
+function getHFiltered(){
+  var yr=sg('hf-year').value,mo=sg('hf-month').value,ch=sg('hf-ch').value;
+  return H.map(function(r){
+    if(ch&&r.c!==ch)return null;
+    var months=r.months.filter(function(m){return(!yr||getYear(m.d)===yr)&&(!mo||getMonth(m.d)===mo);});
+    if(!months.length)return null;
+    return Object.assign({},r,{months:months});
+  }).filter(Boolean);
+}
+function renderH(){
+  // Update channel filter options
+  var chs=[...new Set(H.map(function(r){return r.c;}))];
+  var chSel=sg('hf-ch');var curCh=chSel.value;chSel.innerHTML='<option value="">Semua</option>'+chs.map(function(c){return '<option'+(c===curCh?' selected':'')+'>'+ex(c)+'</option>';}).join('');
+  var filtered=getHFiltered();
+  var totAll=filtered.reduce(function(a,r){return a+r.months.reduce(function(b,m){return b+m.v;},0);},0);
+  sg('hf-total').textContent='Rp '+fmt(totAll);
+  sg('hm').innerHTML='<div class="met g"><div class="ml">Total Penghimpunan</div><div class="mv">Rp '+fmt(totAll)+'</div><div class="ms">sesuai filter</div></div><div class="met b"><div class="ml">Jumlah Program</div><div class="mv">'+filtered.length+'</div></div><div class="met a"><div class="ml">Jumlah Bulan</div><div class="mv">'+filtered.reduce(function(a,r){return a+r.months.length;},0)+'</div><div class="ms">entri data</div></div>';
+
+  if(HVIEW==='compact'){
+    // Compact: pivot table — programs as rows, months as columns
+    var allMonths=[...new Set(filtered.reduce(function(a,r){return a.concat(r.months.map(function(m){return m.d;}));},[])) ].sort();
+    sg('hprog-content').innerHTML='<div class="card"><div class="tw"><table class="himpun-compact"><thead><tr><th>Program</th><th>Channel</th>'+allMonths.map(function(d){return '<th class="tn">'+mDisp(d)+'</th>';}).join('')+'<th class="tn">Total</th><th></th></tr></thead><tbody>'+
+    filtered.map(function(r){var tot=r.months.reduce(function(a,m){return a+m.v;},0);return '<tr><td style="font-weight:600;min-width:150px">'+ex(r.p)+'</td><td style="font-size:11px;color:var(--mu)">'+ex(r.c)+'</td>'+allMonths.map(function(d){var m=r.months.find(function(x){return x.d===d;});return '<td class="tn" style="min-width:110px">'+(m?fmt(m.v):'—')+'</td>';}).join('')+'<td class="tn" style="font-weight:600">'+fmt(tot)+'</td><td><button class="btn btn-xs btn-r" onclick="delHimpunProg('+r.id+')"><i class="ti ti-trash"></i></button></td></tr>';}).join('')+
+    '<tr style="font-weight:700;background:#FAFAFA"><td colspan="2">TOTAL</td>'+allMonths.map(function(d){var t=filtered.reduce(function(a,r){var m=r.months.find(function(x){return x.d===d;});return a+(m?m.v:0);},0);return '<td class="tn">'+fmt(t)+'</td>';}).join('')+'<td class="tn">'+fmt(totAll)+'</td><td></td></tr>'+
+    '</tbody></table></div></div>';
+  } else {
+    // Detail: card per program with month table
+    sg('hprog-content').innerHTML=filtered.map(function(r){
+      var tot=r.months.reduce(function(a,m){return a+m.v;},0);
+      var por=totAll?Math.round(tot/totAll*100):0;
+      return '<div class="card" style="margin-bottom:12px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px"><div><div style="font-size:13px;font-weight:600">'+ex(r.p)+'</div><div style="font-size:11px;color:var(--mu)">'+ex(r.c)+' · Total: <strong>Rp '+fmt(tot)+'</strong> ('+por+'% dari filtered)</div></div><div style="display:flex;gap:5px"><button class="btn btn-xs btn-g" onclick="addHimpunMonth('+r.id+')"><i class="ti ti-plus"></i>Tambah Bulan</button><button class="btn btn-xs btn-r" onclick="delHimpunProg('+r.id+')"><i class="ti ti-trash"></i></button></div></div>'+
+      '<div class="tw"><table><thead><tr><th>Periode (YYYY-MM)</th><th class="tn">Realisasi (Rp)</th><th></th></tr></thead><tbody>'+
+      r.months.map(function(m,idx){var origR=H.find(function(x){return x.id===r.id;});var origIdx=origR?origR.months.findIndex(function(x){return x.d===m.d;}):idx;return '<tr><td><input type="month" class="ie" value="'+ex(m.d)+'" onchange="editHM('+r.id+','+origIdx+',\'d\',this.value)" style="width:150px;border:1px solid var(--bd);border-radius:5px;padding:3px 6px;font-size:12px"></td><td class="tn"><input type="text" class="ie" value="'+fmt(m.v)+'" onchange="editHM('+r.id+','+origIdx+',\'v\',this.value)" style="text-align:right;width:160px"></td><td><button class="btn btn-xs btn-r" onclick="delHimpunMonth('+r.id+','+origIdx+')"><i class="ti ti-x"></i></button></td></tr>';}).join('')+
+      '</tbody></table></div></div>';
+    }).join('');
+  }
+}
+function editHM(rid,idx,field,val){var r=H.find(function(x){return x.id===rid;});if(!r||!r.months[idx])return;if(field==='v')r.months[idx].v=parseNum(val);else r.months[idx][field]=val;lss('wag_h3',H);}
+function delHimpunMonth(rid,idx){if(!confirm('Hapus baris bulan ini?'))return;var r=H.find(function(x){return x.id===rid;});if(r){r.months.splice(idx,1);lss('wag_h3',H);renderH();}}
+function delHimpunProg(rid){if(!confirm('Hapus program beserta semua datanya?'))return;H=H.filter(function(x){return x.id!==rid;});lss('wag_h3',H);renderH();renderD();}
+function addHimpunMonth(rid){var r=H.find(function(x){return x.id===rid;});if(!r)return;var d=prompt('Periode (format YYYY-MM, misal 2026-05):',new Date().toISOString().substring(0,7));if(!d||!/^\d{4}-\d{2}$/.test(d)){alert('Format harus YYYY-MM');return;}if(r.months.find(function(m){return m.d===d;})){alert('Periode ini sudah ada!');return;}r.months.push({d:d,v:0});r.months.sort(function(a,b){return a.d>b.d?1:-1;});lss('wag_h3',H);renderH();renderD();}
+function addHimpunProg(){var p=sg('nh-p').value.trim();if(!p){alert('Nama program harus diisi!');return;}H.push({id:nid(H),p:p,c:sg('nh-c').value||'—',months:[]});lss('wag_h3',H);sg('nh-p').value='';sg('nh-c').value='';closeAP('ap-himpun');renderH();renderD();}
+function renderHch(){var chs={};var filtered=getHFiltered();filtered.forEach(function(r){chs[r.c]=(chs[r.c]||0)+r.months.reduce(function(a,m){return a+m.v;},0);});var tot=Object.values(chs).reduce(function(a,b){return a+b;},0);sg('hch').innerHTML='<div class="ch"><div class="ct">Breakdown per Channel</div></div>'+Object.entries(chs).sort(function(a,b){return b[1]-a[1];}).map(function(e){var p=tot?(e[1]/tot*100).toFixed(1):0;return '<div style="margin-bottom:11px"><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:13px;font-weight:500">'+ex(e[0])+'</span><span style="font-size:13px;font-weight:600">Rp '+fmt(e[1])+' <span style="font-size:10px;color:var(--mu)">('+p+'%)</span></span></div><div class="pb"><div class="pf g" style="width:'+p+'%"></div></div></div>';}).join('');}
+var thSort={col:'',asc:true};
+function sortTH(col){if(thSort.col===col)thSort.asc=!thSort.asc;else{thSort.col=col;thSort.asc=true;}renderHtgt();}
+function renderHtgt(){
+  var sorted=[...TH];
+  if(thSort.col){sorted.sort(function(a,b){var va=thSort.col==='jenis'?a.jenis:parseNum(a[thSort.col]);var vb=thSort.col==='jenis'?b.jenis:parseNum(b[thSort.col]);return thSort.asc?(va>vb?1:-1):(va<vb?1:-1);});}
+  var tT=TH.reduce(function(a,r){return a+parseNum(r.t);},0),tR=TH.reduce(function(a,r){return a+parseNum(r.r);},0);
+  sg('tb-ht').innerHTML=sorted.map(function(r){var g=parseNum(r.t)-parseNum(r.r),p=pc(r.r,r.t);return '<tr><td><input type="text" class="ie" value="'+ex(r.jenis)+'" onchange="eTH('+r.id+',\'jenis\',this.value)" style="font-weight:600;min-width:200px;width:100%"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.t)+'" onchange="eTH('+r.id+',\'t\',this.value)" style="text-align:right;width:130px"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.r)+'" onchange="eTH('+r.id+',\'r\',this.value)" style="text-align:right;width:130px;color:var(--G)"></td><td class="tn" style="color:var(--R)">Rp '+fmt(g)+'</td><td><div style="display:flex;align-items:center;gap:5px"><div class="pb" style="width:70px"><div class="pf '+pbc(p)+'" style="width:'+p+'%"></div></div><span style="font-size:10px">'+p+'%</span></div></td><td><button class="btn btn-xs btn-r" onclick="dTH('+r.id+')"><i class="ti ti-trash"></i></button></td></tr>';}).join('')+'<tr style="font-weight:700;background:#FAFAFA"><td>TOTAL</td><td class="tn">Rp '+fmt(tT)+'</td><td class="tn" style="color:var(--G)">Rp '+fmt(tR)+'</td><td class="tn" style="color:var(--R)">Rp '+fmt(tT-tR)+'</td><td><span class="bdg bA">'+pc(tR,tT)+'%</span></td><td></td></tr>';
+}
+function eTH(id,f,v){var r=TH.find(function(x){return x.id===id;});if(r){r[f]=(f==='jenis')?v:parseNum(v);lss('wag_th2',TH);renderD();}}
+function dTH(id){if(!confirm('Hapus?'))return;TH=TH.filter(function(x){return x.id!==id;});lss('wag_th2',TH);renderHtgt();}
+function addTHrow(){TH.push({id:nid(TH),jenis:'Jenis baru',t:0,r:0});lss('wag_th2',TH);renderHtgt();}
+
+// ==================== PENYALURAN PROGRAM ====================
+function renderSP(){
+  var yr=sg('spf-year').value,mo=sg('spf-month').value,div=sg('spf-div').value;
+  var filtered=SP.filter(function(r){return !div||r.d===div;}).map(function(r){var months=r.months.filter(function(m){return(!yr||getYear(m.d)===yr)&&(!mo||getMonth(m.d)===mo);});return Object.assign({},r,{months:months});});
+  var tT=SP.reduce(function(a,r){return a+parseNum(r.t);},0);
+  var tR=filtered.reduce(function(a,r){return a+r.months.reduce(function(b,m){return b+m.v;},0);},0);
+  sg('spm').innerHTML='<div class="met b"><div class="ml">Total Target 2026</div><div class="mv">Rp '+fmt(tT)+'</div></div><div class="met g"><div class="ml">Realisasi (filter aktif)</div><div class="mv">Rp '+fmt(tR)+'</div></div><div class="met a"><div class="ml">Progress</div><div class="mv">'+pc(tR,tT)+'%</div></div><div class="met r"><div class="ml">Gap</div><div class="mv">Rp '+fmt(tT-tR)+'</div></div>';
+  sg('spprog-content').innerHTML=filtered.map(function(r){
+    var real=r.months.reduce(function(a,m){return a+m.v;},0),gap=parseNum(r.t)-real,p=pc(real,r.t);
+    return '<div class="card" style="margin-bottom:12px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px"><div><div style="font-size:13px;font-weight:600">'+ex(r.p)+' <span class="bdg bB" style="font-size:10px">'+ex(r.d)+'</span></div><div style="font-size:11px;color:var(--mu);margin-top:3px">'+ex(r.s)+' · Target: Rp '+fmt(r.t)+' · Realisasi: <strong>Rp '+fmt(real)+'</strong> · Gap: Rp '+fmt(gap)+' <span style="color:var(--G)">('+p+'%)</span></div></div><div style="display:flex;gap:5px"><button class="btn btn-xs btn-g" onclick="addSPMonth('+r.id+')"><i class="ti ti-plus"></i>Bulan</button><button class="btn btn-xs" onclick="editSPMeta('+r.id+')"><i class="ti ti-edit"></i></button><button class="btn btn-xs btn-r" onclick="delSP('+r.id+')"><i class="ti ti-trash"></i></button></div></div>'+
+    '<div class="tw"><table><thead><tr><th>Periode (YYYY-MM)</th><th class="tn">Realisasi (Rp)</th><th></th></tr></thead><tbody>'+
+    r.months.map(function(m,idx){var origR=SP.find(function(x){return x.id===r.id;});var origIdx=origR?origR.months.findIndex(function(x){return x.d===m.d;}):idx;return '<tr><td><input type="month" class="ie" value="'+ex(m.d)+'" onchange="editSPM('+r.id+','+origIdx+',\'d\',this.value)" style="width:150px;border:1px solid var(--bd);border-radius:5px;padding:3px 6px;font-size:12px"></td><td class="tn"><input type="text" class="ie" value="'+fmt(m.v)+'" onchange="editSPM('+r.id+','+origIdx+',\'v\',this.value)" style="text-align:right;width:160px"></td><td><button class="btn btn-xs btn-r" onclick="delSPMonth('+r.id+','+origIdx+')"><i class="ti ti-x"></i></button></td></tr>';}).join('')+
+    '</tbody></table></div></div>';
+  }).join('');
+}
+function editSPM(rid,idx,field,val){var r=SP.find(function(x){return x.id===rid;});if(!r||!r.months[idx])return;if(field==='v')r.months[idx].v=parseNum(val);else r.months[idx][field]=val;lss('wag_sp3',SP);}
+function addSPMonth(rid){var r=SP.find(function(x){return x.id===rid;});if(!r)return;var d=prompt('Periode (format YYYY-MM, misal 2026-05):',new Date().toISOString().substring(0,7));if(!d||!/^\d{4}-\d{2}$/.test(d)){alert('Format harus YYYY-MM');return;}if(r.months.find(function(m){return m.d===d;})){alert('Periode ini sudah ada!');return;}r.months.push({d:d,v:0});r.months.sort(function(a,b){return a.d>b.d?1:-1;});lss('wag_sp3',SP);renderSP();}
+function delSPMonth(rid,idx){if(!confirm('Hapus?'))return;var r=SP.find(function(x){return x.id===rid;});if(r){r.months.splice(idx,1);lss('wag_sp3',SP);renderSP();}}
+function editSPMeta(rid){var r=SP.find(function(x){return x.id===rid;});if(!r)return;var n=prompt('Nama program:',r.p);if(n)r.p=n;var s=prompt('Sumber dana:',r.s);if(s)r.s=s;var t=prompt('Target 2026 (Rp):',r.t);if(t)r.t=parseNum(t);lss('wag_sp3',SP);renderSP();renderD();}
+function delSP(id){if(!confirm('Hapus program ini?'))return;SP=SP.filter(function(x){return x.id!==id;});lss('wag_sp3',SP);renderSP();renderD();}
+function addSP(){var p=sg('sp-p').value.trim();if(!p){alert('Nama program harus diisi!');return;}SP.push({id:nid(SP),p:p,s:sg('sp-s').value,d:sg('sp-d').value,t:parseNum(sg('sp-t').value),months:[]});lss('wag_sp3',SP);['sp-p','sp-s','sp-t'].forEach(function(x){sg(x).value='';});closeAP('ap-sp');renderSP();}
+
+// ==================== SAL WAKAF UANG ====================
+function renderSU(){
+  var yr=sg('suf-year').value,jenis=sg('suf-jenis').value,q=sg('suf-q').value.toLowerCase(),sortf=sg('suf-sort').value;
+  var filtered=SU.filter(function(r){return(!yr||(getYear(r.tm)===yr||getYear(r.ta)===yr))&&(!jenis||r.j===jenis)&&(!q||r.p.toLowerCase().includes(q)||r.k.toLowerCase().includes(q));});
+  filtered.sort(function(a,b){var va=a[sortf],vb=b[sortf];if(sortf==='n')return parseNum(vb)-parseNum(va);return va>vb?1:-1;});
+  var tN=filtered.reduce(function(a,r){return a+parseNum(r.n);},0);
+  sg('sum2').innerHTML='<div class="met g"><div class="ml">Total Nominal</div><div class="mv">Rp '+fmt(tN)+'</div></div><div class="met b"><div class="ml">Jumlah Instrumen</div><div class="mv">'+filtered.length+'</div></div>';
+  sg('tb-su').innerHTML=filtered.map(function(r){return '<tr><td><input type="text" class="ie" value="'+ex(r.p)+'" onchange="eSU('+r.id+',\'p\',this.value)" style="font-weight:600;width:100%"></td><td><input type="text" class="ie" value="'+ex(r.j)+'" onchange="eSU('+r.id+',\'j\',this.value)"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.n)+'" onchange="eSU('+r.id+',\'n\',this.value)" style="text-align:right;width:140px"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.pm)+'" onchange="eSU('+r.id+',\'pm\',this.value)" style="text-align:right;width:70px"></td><td><input type="month" class="ie" value="'+ex(r.tm)+'" onchange="eSU('+r.id+',\'tm\',this.value)" style="width:140px;border:1px solid var(--bd);border-radius:5px;padding:3px 6px;font-size:12px"></td><td><input type="month" class="ie" value="'+ex(r.ta)+'" onchange="eSU('+r.id+',\'ta\',this.value)" style="width:140px;border:1px solid var(--bd);border-radius:5px;padding:3px 6px;font-size:12px"></td><td><input type="text" class="ie" value="'+ex(r.k)+'" onchange="eSU('+r.id+',\'k\',this.value)" style="color:var(--mu);width:100%"></td><td><button class="btn btn-xs btn-r" onclick="dSU('+r.id+')"><i class="ti ti-trash"></i></button></td></tr>';}).join('');}
+function eSU(id,f,v){var r=SU.find(function(x){return x.id===id;});if(r){r[f]=(f==='n'||f==='pm')?parseNum(v):v;lss('wag_su2',SU);}}
+function dSU(id){if(!confirm('Hapus?'))return;SU=SU.filter(function(x){return x.id!==id;});lss('wag_su2',SU);renderSU();}
+function addSU(){var p=sg('su-p').value.trim();if(!p){alert('Nama program harus diisi!');return;}SU.push({id:nid(SU),p:p,j:sg('su-j').value,n:parseNum(sg('su-n').value),pm:parseNum(sg('su-pm').value),tm:sg('su-tm').value,ta:sg('su-ta').value,k:sg('su-k').value});lss('wag_su2',SU);['su-p','su-j','su-n','su-pm','su-tm','su-ta','su-k'].forEach(function(x){sg(x).value='';});closeAP('ap-su');renderSU();}
+
+// ==================== SAL MELALUI UANG ====================
+function renderSM(){
+  var yr=sg('smf-year').value,jenis=sg('smf-jenis').value,q=sg('smf-q').value.toLowerCase(),sortf=sg('smf-sort').value;
+  var filtered=SM.filter(function(r){return(!yr||getYear(r.tgl)===yr)&&(!jenis||r.j===jenis)&&(!q||r.p.toLowerCase().includes(q)||r.l.toLowerCase().includes(q));});
+  filtered.sort(function(a,b){var va=a[sortf],vb=b[sortf];if(sortf==='n')return parseNum(vb)-parseNum(va);return va>vb?1:-1;});
+  var tN=filtered.reduce(function(a,r){return a+parseNum(r.n);},0);
+  sg('smm').innerHTML='<div class="met g"><div class="ml">Total Nominal</div><div class="mv">Rp '+fmt(tN)+'</div></div><div class="met b"><div class="ml">Penerima Manfaat</div><div class="mv">'+fmt(filtered.reduce(function(a,r){return a+parseNum(r.pm);},0))+'</div><div class="ms">jiwa</div></div><div class="met a"><div class="ml">Jumlah Program</div><div class="mv">'+filtered.length+'</div></div>';
+  sg('tb-sm').innerHTML=filtered.map(function(r){return '<tr><td><input type="text" class="ie" value="'+ex(r.p)+'" onchange="eSM('+r.id+',\'p\',this.value)" style="font-weight:600;width:100%"></td><td><input type="text" class="ie" value="'+ex(r.j)+'" onchange="eSM('+r.id+',\'j\',this.value)"></td><td><input type="text" class="ie" value="'+ex(r.l)+'" onchange="eSM('+r.id+',\'l\',this.value)" style="width:100%"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.n)+'" onchange="eSM('+r.id+',\'n\',this.value)" style="text-align:right;width:140px"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.pm)+'" onchange="eSM('+r.id+',\'pm\',this.value)" style="text-align:right;width:70px"></td><td><input type="date" class="ie" value="'+ex(r.tgl)+'" onchange="eSM('+r.id+',\'tgl\',this.value)" style="width:140px;border:1px solid var(--bd);border-radius:5px;padding:3px 6px;font-size:12px"></td><td><input type="text" class="ie" value="'+ex(r.k)+'" onchange="eSM('+r.id+',\'k\',this.value)" style="color:var(--mu);width:100%"></td><td><button class="btn btn-xs btn-r" onclick="dSM('+r.id+')"><i class="ti ti-trash"></i></button></td></tr>';}).join('');}
+function eSM(id,f,v){var r=SM.find(function(x){return x.id===id;});if(r){r[f]=(f==='n'||f==='pm')?parseNum(v):v;lss('wag_sm2',SM);}}
+function dSM(id){if(!confirm('Hapus?'))return;SM=SM.filter(function(x){return x.id!==id;});lss('wag_sm2',SM);renderSM();}
+function addSM(){var p=sg('sm-p').value.trim();if(!p){alert('Nama program harus diisi!');return;}SM.push({id:nid(SM),p:p,j:sg('sm-j').value,l:sg('sm-l').value,n:parseNum(sg('sm-n').value),pm:parseNum(sg('sm-pm').value),tgl:sg('sm-tgl').value,k:sg('sm-k').value});lss('wag_sm2',SM);['sm-p','sm-l','sm-n','sm-pm','sm-tgl','sm-k'].forEach(function(x){sg(x).value='';});closeAP('ap-sm');renderSM();}
+
+// ==================== IMBAL HASIL ====================
+function renderIH(){
+  var yr=sg('ihf-year').value,mo=sg('ihf-month').value,sortf=sg('ihf-sort').value;
+  var filtered=IH.filter(function(r){return(!yr||getYear(r.tgl)===yr)&&(!mo||getMonth(r.tgl)===mo);});
+  filtered.sort(function(a,b){var va=a[sortf],vb=b[sortf];if(sortf==='n')return parseNum(vb)-parseNum(va);return va>vb?1:-1;});
+  var tN=filtered.reduce(function(a,r){return a+parseNum(r.n);},0);
+  sg('ihm').innerHTML='<div class="met g"><div class="ml">Total Nominal</div><div class="mv">Rp '+fmt(tN)+'</div></div><div class="met b"><div class="ml">Penerima Manfaat</div><div class="mv">'+fmt(filtered.reduce(function(a,r){return a+parseNum(r.pm);},0))+'</div></div><div class="met a"><div class="ml">Jumlah Penyaluran</div><div class="mv">'+filtered.length+'</div></div>';
+  sg('tb-ih').innerHTML=filtered.map(function(r){return '<tr><td><input type="text" class="ie" value="'+ex(r.p)+'" onchange="eIH('+r.id+',\'p\',this.value)" style="font-weight:600;width:100%"></td><td><input type="text" class="ie" value="'+ex(r.s)+'" onchange="eIH('+r.id+',\'s\',this.value)"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.n)+'" onchange="eIH('+r.id+',\'n\',this.value)" style="text-align:right;width:140px"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.pm)+'" onchange="eIH('+r.id+',\'pm\',this.value)" style="text-align:right;width:70px"></td><td><input type="date" class="ie" value="'+ex(r.tgl)+'" onchange="eIH('+r.id+',\'tgl\',this.value)" style="width:140px;border:1px solid var(--bd);border-radius:5px;padding:3px 6px;font-size:12px"></td><td><input type="text" class="ie" value="'+ex(r.k)+'" onchange="eIH('+r.id+',\'k\',this.value)" style="color:var(--mu);width:100%"></td><td><button class="btn btn-xs btn-r" onclick="dIH('+r.id+')"><i class="ti ti-trash"></i></button></td></tr>';}).join('');}
+function eIH(id,f,v){var r=IH.find(function(x){return x.id===id;});if(r){r[f]=(f==='n'||f==='pm')?parseNum(v):v;lss('wag_ih2',IH);}}
+function dIH(id){if(!confirm('Hapus?'))return;IH=IH.filter(function(x){return x.id!==id;});lss('wag_ih2',IH);renderIH();}
+function addIH(){var p=sg('ih-p').value.trim();if(!p){alert('Nama program harus diisi!');return;}IH.push({id:nid(IH),p:p,s:sg('ih-s').value,n:parseNum(sg('ih-n').value),pm:parseNum(sg('ih-pm').value),tgl:sg('ih-tgl').value,k:sg('ih-k').value});lss('wag_ih2',IH);['ih-p','ih-s','ih-n','ih-pm','ih-tgl','ih-k'].forEach(function(x){sg(x).value='';});closeAP('ap-ih');renderIH();}
+
+// ==================== PENGELOLAAN WAKAF UANG ====================
+function renderPW(){
+  var yr=sg('pwf-year').value,mo=sg('pwf-month').value,q=sg('pwf-q').value.toLowerCase();
+  var filtered=PW.filter(function(r){return(!yr||getYear(r.tgl)===yr)&&(!mo||getMonth(r.tgl)===mo)&&(!q||r.p.toLowerCase().includes(q)||r.s.toLowerCase().includes(q));});
+  var tN=filtered.reduce(function(a,r){return a+parseNum(r.n);},0);
+  sg('pwm').innerHTML='<div class="met g"><div class="ml">Total Dana Dikelola</div><div class="mv">Rp '+fmt(tN)+'</div></div><div class="met b"><div class="ml">Penerima Manfaat</div><div class="mv">'+fmt(filtered.reduce(function(a,r){return a+parseNum(r.pm);},0))+'</div></div><div class="met p"><div class="ml">Jumlah Program</div><div class="mv">'+filtered.length+'</div></div>';
+  sg('tb-pw').innerHTML=filtered.map(function(r){return '<tr><td><input type="text" class="ie" value="'+ex(r.p)+'" onchange="ePW('+r.id+',\'p\',this.value)" style="font-weight:600;width:100%"></td><td><input type="text" class="ie" value="'+ex(r.s)+'" onchange="ePW('+r.id+',\'s\',this.value)"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.n)+'" onchange="ePW('+r.id+',\'n\',this.value)" style="text-align:right;width:140px"></td><td class="tn"><input type="text" class="ie" value="'+fmt(r.pm)+'" onchange="ePW('+r.id+',\'pm\',this.value)" style="text-align:right;width:70px"></td><td><input type="date" class="ie" value="'+ex(r.tgl)+'" onchange="ePW('+r.id+',\'tgl\',this.value)" style="width:140px;border:1px solid var(--bd);border-radius:5px;padding:3px 6px;font-size:12px"></td><td><input type="text" class="ie" value="'+ex(r.k)+'" onchange="ePW('+r.id+',\'k\',this.value)" style="color:var(--mu);width:100%"></td><td><button class="btn btn-xs btn-r" onclick="dPW('+r.id+')"><i class="ti ti-trash"></i></button></td></tr>';}).join('');}
+function ePW(id,f,v){var r=PW.find(function(x){return x.id===id;});if(r){r[f]=(f==='n'||f==='pm')?parseNum(v):v;lss('wag_pw2',PW);}}
+function dPW(id){if(!confirm('Hapus?'))return;PW=PW.filter(function(x){return x.id!==id;});lss('wag_pw2',PW);renderPW();}
+function addPW(){var p=sg('pw-p').value.trim();if(!p){alert('Nama program harus diisi!');return;}PW.push({id:nid(PW),p:p,s:sg('pw-s').value,n:parseNum(sg('pw-n').value),pm:parseNum(sg('pw-pm').value),tgl:sg('pw-tgl').value,k:sg('pw-k').value});lss('wag_pw2',PW);['pw-p','pw-s','pw-n','pw-pm','pw-tgl','pw-k'].forEach(function(x){sg(x).value='';});closeAP('ap-pw');renderPW();}
+
+// ==================== ASET ====================
+function atabSwitch(t,el){document.querySelectorAll('#pg-aset .tab').forEach(function(b){b.classList.remove('on');});el.classList.add('on');sg('ag-view').style.display=t==='grid'?'block':'none';sg('at-view').style.display=t==='table'?'block':'none';}
+function getAFiltered(){
+  var st=sg('af-st').value,tp=sg('af-tp').value,q=sg('af-q').value.toLowerCase(),sortf=sg('af-sort').value;
+  var filtered=A.filter(function(r){return(!st||r.status===st)&&(!tp||r.tipe===tp)&&(!q||r.nama.toLowerCase().includes(q)||r.lokasi.toLowerCase().includes(q));});
+  filtered.sort(function(a,b){if(sortf==='nilai')return parseNum(b.nilai)-parseNum(a.nilai);return a.nama>b.nama?1:-1;});
+  return filtered;
+}
+function renderA(){
+  var filtered=getAFiltered();
+  var tN=filtered.reduce(function(a,r){return a+parseNum(r.nilai);},0);
+  sg('am').innerHTML='<div class="met g"><div class="ml">Total Nilai Aset</div><div class="mv">Rp '+fmt(tN)+'</div></div><div class="met b"><div class="ml">Wakaf Selamanya</div><div class="mv">'+filtered.filter(function(x){return x.status==='Wakaf Selamanya';}).length+'</div><div class="ms">unit</div></div><div class="met a"><div class="ml">Temporer/Investasi</div><div class="mv">'+filtered.filter(function(x){return x.status!=='Wakaf Selamanya';}).length+'</div><div class="ms">unit</div></div><div class="met p"><div class="ml">Total Ditampilkan</div><div class="mv">'+filtered.length+'</div><div class="ms">dari '+A.length+'</div></div>';
+  sg('agrid').innerHTML=filtered.map(function(a){var ic=aico(a.tipe);return '<div class="acard"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9px"><div class="aico" style="background:'+ic.bg+';color:'+ic.c+'"><i class="ti '+ic.i+'"></i></div><div style="display:flex;gap:3px"><button class="btn btn-xs" onclick="openEditA('+a.id+')" title="Edit"><i class="ti ti-edit"></i></button><button class="btn btn-xs btn-r" onclick="dA('+a.id+')" title="Hapus"><i class="ti ti-trash"></i></button></div></div><div style="font-size:13px;font-weight:600;margin-bottom:2px">'+ex(a.nama)+'</div><div style="font-size:11px;color:var(--mu);margin-bottom:7px;display:flex;align-items:center;gap:3px"><i class="ti ti-map-pin" style="font-size:10px"></i>'+ex(a.lokasi)+'</div>'+asbadge(a.status)+'<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:7px;border-top:1px solid #F4F4F5"><span style="font-size:11px;color:var(--mu)">'+ex(a.pu)+'</span><span style="font-size:12px;font-weight:600;color:var(--G)">'+(parseNum(a.nilai)?'Rp '+fmt(a.nilai):'—')+'</span></div><div style="font-size:10px;color:var(--lt);margin-top:5px">'+ex(a.tahun)+' · '+ex(a.wakif)+'</div></div>';}).join('');
+  sg('tb-a').innerHTML=filtered.map(function(a,i){return '<tr><td>'+(i+1)+'</td><td><input type="text" class="ie" value="'+ex(a.nama)+'" onchange="eA('+a.id+',\'nama\',this.value)" style="font-weight:600;min-width:120px;width:100%"></td><td><input type="text" class="ie" value="'+ex(a.wakif)+'" onchange="eA('+a.id+',\'wakif\',this.value)" style="width:100%"></td><td><input type="text" class="ie" value="'+ex(a.lokasi)+'" onchange="eA('+a.id+',\'lokasi\',this.value)" style="width:100%"></td><td><input type="text" class="ie" value="'+ex(a.pu)+'" onchange="eA('+a.id+',\'pu\',this.value)" style="width:100%"></td><td>'+asbadge(a.status)+'</td><td class="tn"><input type="text" class="ie" value="'+fmt(a.nilai)+'" onchange="eA('+a.id+',\'nilai\',this.value)" style="text-align:right;width:130px"></td><td><input type="text" class="ie" value="'+ex(a.tahun)+'" onchange="eA('+a.id+',\'tahun\',this.value)" style="width:80px"></td><td><button class="btn btn-xs btn-r" onclick="dA('+a.id+')"><i class="ti ti-trash"></i></button></td></tr>';}).join('');}
+function eA(id,f,v){var a=A.find(function(x){return x.id===id;});if(a){a[f]=(f==='nilai')?parseNum(v):v;lss('wag_a2',A);}}
+function dA(id){if(!confirm('Hapus aset ini?'))return;A=A.filter(function(x){return x.id!==id;});lss('wag_a2',A);renderA();}
+function openEditA(id){var a=A.find(function(x){return x.id===id;});if(!a)return;AEID=id;sg('aset-title').textContent='Edit Aset';sg('na-n').value=a.nama;sg('na-w').value=a.wakif;sg('na-l').value=a.lokasi;sg('na-pu').value=a.pu;sg('na-st').value=a.status;sg('na-tp').value=a.tipe;sg('na-nv').value=fmt(a.nilai);sg('na-th').value=a.tahun;sg('ap-aset').classList.add('open');sg('ap-aset').scrollIntoView({behavior:'smooth'});}
+function cancelAset(){AEID=null;sg('aset-title').textContent='Tambah Aset Baru';['na-n','na-w','na-l','na-pu','na-nv','na-th'].forEach(function(x){sg(x).value='';});closeAP('ap-aset');}
+function saveAset(){var nama=sg('na-n').value.trim();if(!nama){alert('Nama aset harus diisi!');return;}var data={nama:nama,wakif:sg('na-w').value,lokasi:sg('na-l').value,pu:sg('na-pu').value,status:sg('na-st').value,tipe:sg('na-tp').value,nilai:parseNum(sg('na-nv').value),tahun:sg('na-th').value};if(AEID){var a=A.find(function(x){return x.id===AEID;});if(a)Object.assign(a,data);AEID=null;sg('aset-title').textContent='Tambah Aset Baru';}else{data.id=nid(A);A.push(data);}lss('wag_a2',A);['na-n','na-w','na-l','na-pu','na-nv','na-th'].forEach(function(x){sg(x).value='';});closeAP('ap-aset');renderA();}
+
+// INIT
+renderD();renderK();
+</script>
+</body>
+</html>
